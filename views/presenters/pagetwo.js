@@ -1,0 +1,3 @@
+pageRedirect = () => {
+  route('pageone');
+}

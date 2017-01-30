@@ -1,0 +1,48 @@
+{
+  "name": "chrome_extension_riot",
+  "version": "0.0.1",
+  "description": "Chrome Extension Boilerplate with Riot",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "karma start| tee unit_test_report.md",
+    "dev": "gulp watch",
+    "build": "gulp bundle",
+    "development": "gulp pack",
+    "staging": "gulp pack --env staging",
+    "production": "gulp pack --env production"
+  },
+  "dependencies": {
+    "gulp": "*",
+    "gulp-riot": "*",
+    "gulp-concat": "*",
+    "esminify": "*",
+    "gulp-wait": "*",
+    "delete": "*",
+    "gulp-strip-debug": "*",
+    "gulp-html-replace": "*",
+    "fs": "~0.0.2",
+    "gulp-util": "*",
+    "gulp-crx-pack": "*",
+    "gulp-replace": "*"
+  },
+  "author": "acesmndr",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015-riot": "^1.1.0",
+    "chai": "^3.5.0",
+    "gulp-babel": "*",
+    "karma": "^1.3.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.2",
+    "karma-riot": "^2.0.0",
+    "karma-sinon": "^1.0.5",
+    "karma-sinon-chrome": "^0.2.0",
+    "riot": "^3.0.5",
+    "sinon-chrome": "^2.1.2"
+  }
+}

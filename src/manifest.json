@@ -1,0 +1,19 @@
+{
+  "name": "Chrome Extension Boilerplate with Riot",
+  "description": "Chrome Extension with RIOT MVP framework",
+  "version": "0.0.1",
+  "background": {
+    "persistent": true,
+    "page": "background.html"
+  },
+  "browser_action": {
+    "default_icon": "assets/img/icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "alarms","storage","notifications","contextMenus"
+  ],
+  "icons": {"64": "assets/img/icon.png" },
+  "manifest_version": 2,
+  "update_url": "https://replacewithupdateurl.com/update.xml"
+}
