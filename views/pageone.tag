@@ -4,8 +4,8 @@
 		<br>
 		<input type="button" onclick={ pageRedirect } value="Click Me"/>
 	</div>
-	<style>
-		@import url('assets/css/pageone.css');
+	<style type='scss'>
+		@import 'styles/pageone';
 	</style>
 	<script src="presenters/pageone.js"></script>
 </pageone>

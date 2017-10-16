@@ -5,5 +5,8 @@
 		<br>
 		<input type="button" onclick={ pageRedirect } value="Click Me"/>
 	</div>
+	<style type='scss'>
+		@import 'styles/pagetwo';
+	</style>
 	<script src="presenters/pagetwo.js"></script>
 </pagetwo>
