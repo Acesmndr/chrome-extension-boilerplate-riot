@@ -1,2 +1,25 @@
 @import './colorpalette';
+@import './material-theme';
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+div{
+  min-width: 400px;
+}
+
+.main-body {
+  margin-top: 8px;
+}
+
+.nav-wrapper {
+  height: 30px;
+  background: $greyish-blue;
+  margin: -8px -8px 0px -8px;
+  color: white;
+  font-size: 24px;
+  padding: 8px;
+}

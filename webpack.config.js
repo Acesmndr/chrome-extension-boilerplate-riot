@@ -8,7 +8,7 @@ const baseUrl = () => {
   switch (ENV) {
     case 'production':
       return 'https://acesmndr.com';
-    case 'staging':
+    case 'development':
     default:
       return 'https://acesmndr.staging.com';
   }
@@ -18,9 +18,6 @@ const packageJSON = require('./package.json');
 const copyPlugin = new CopyWebpackPlugin([{
   from: './src/assets/img/',
   to: 'img/',
-}, {
-  from: './src/assets/css/',
-  to: 'css/',
 }, {
   from: './src/popup.html',
   to: '../',
@@ -44,7 +41,7 @@ const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({ comments: false, comp
 
 module.exports = [{
   entry: {
-    background: [`${__dirname}/src/assets/model/background.js`],
+    background: [`${__dirname}/src/assets/background.js`],
   },
   module: {
     loaders: [{
@@ -60,7 +57,7 @@ module.exports = [{
   },
 }, {
   entry: {
-    'bundle.min': ['./src/assets/presenter/messaging_mixin.js'].concat(glob.sync('./views/*.tag'), ['./src/assets/presenter/presenter_helper.js', './src/assets/presenter/main.js']),
+    'bundle.min': ['./views/presenters/mixins/messaging-mixin.js'].concat(glob.sync('./views/*.tag'), ['./views/presenters/controllers/main.js']),
   },
   resolveLoader: {
     modules: ['node_modules', `${__dirname}/loaders`],
@@ -73,6 +70,16 @@ module.exports = [{
       {
         test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['es2015'] },
       },
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: "style-loader"
+        }, {
+            loader: "css-loader"
+        }, {
+            loader: "sass-loader"
+        }]
+      }
     ],
   },
   plugins: (ENV === 'production') ? [defineUrlPlugin, uglifyPlugin] : [defineUrlPlugin],

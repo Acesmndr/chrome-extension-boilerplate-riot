@@ -1,3 +1,3 @@
-pageRedirect = () => {
-  route('pagetwo');
+this.pageRedirect = () => {
+  riot.mount('.main-body', 'pagetwo');
 }

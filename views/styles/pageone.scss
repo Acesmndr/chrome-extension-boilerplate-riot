@@ -1,1 +1,14 @@
 @import './colorpalette';
+.graphic {
+  background: #d32978;
+  padding: 16px;
+  color: white;
+  // margin: -16px -16px 0px -16px;
+  .huge {
+    font-size: 62px;
+  }
+  .medium {
+    text-align: right;
+    font-size: 32px;
+  }
+}
