@@ -8,7 +8,7 @@
 			</form>
 		</div>
 		<div class="content right-align">
-			<input type='button' onclick={ pageRedirect } value='Return to page 1'/>
+			<input type='button' onclick={ goToFirstPage } value='Return to page 1'/>
 		</div>
 	</div>
 	<style type='scss'>

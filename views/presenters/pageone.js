@@ -1,3 +1,3 @@
-this.pageRedirect = () => {
+this.goToSecondPage = () => {
   riot.mount('.main-body', 'pagetwo');
 }

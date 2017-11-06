@@ -7,7 +7,7 @@
 			</div>
 		</div>
 		<div class='content right-align'>
-			<input type='button' onclick={ pageRedirect } value='Go to page 2'/>
+			<input type='button' onclick={ goToSecondPage } value='Go to page 2'/>
 		</div>
 	</div>
 	<style type='scss'>
