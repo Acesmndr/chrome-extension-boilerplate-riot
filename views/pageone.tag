@@ -7,6 +7,7 @@
 			</div>
 		</div>
 		<div class='content right-align'>
+			<input type='button' onclick={ getAjaxDataFromBackground } value='Send Data Request'/>
 			<input type='button' onclick={ goToSecondPage } value='Go to page 2'/>
 		</div>
 	</div>

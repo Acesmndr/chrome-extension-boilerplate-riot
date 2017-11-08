@@ -6,11 +6,11 @@ const isValidStatus = (status) => {
   return /^[2-3][0-9][0-9]$/.test(status);
 }
 
-function setContentTypeHeader(obj) {
+const setContentTypeHeader = (obj) => {
   obj.setRequestHeader('Content-Type', 'application/json');
 }
 
-function parseResponse(requestUrl, response) {
+const parseResponse = (requestUrl, response) => {
   const responseStatus = response.status;
   const validStatus = isValidStatus(responseStatus);
   if (validStatus) {
@@ -26,8 +26,8 @@ function parseResponse(requestUrl, response) {
   };
 }
 
-export function baseRequestApi(type, requestUrl, data, callback) {
-  const parsedRequestUrl = `${BASE_URL}${requestUrl}`;
+export function request(type, requestUrl, data, callback) {
+  const parsedRequestUrl = requestUrl;
   const requestObj = new XMLHttpRequest();
   requestObj.timeout = 15000;
   requestObj.open(type.toUpperCase(), parsedRequestUrl, true);

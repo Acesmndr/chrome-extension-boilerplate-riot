@@ -34,8 +34,5 @@ const messageMixin = {
   mountView: (view, options = {}) => {
     riot.mount('.main-body', view, options);
   },
-  // setOpts: (e, options) => {
-  //   e.update(options);
-  // }
 };
 riot.mixin('messageMixin', messageMixin);

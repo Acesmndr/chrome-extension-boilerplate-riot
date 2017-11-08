@@ -18,10 +18,17 @@ const saveData = (whatToStore, callback = () => {}) => {
   });
 }
 
+const sendAjaxRequest = () => {
+  fileRequest.getFile('https://reqres.in/api/users', (data) => {
+    chromeUtils.notify({title:'Background AJAX request successful', message:JSON.stringify(data)});
+  })
+}
+
 chromeUtils.setupContextMenu(() => { reset(); });
 
 export {
   getData,
   reset,
   saveData,
+  sendAjaxRequest,
 }

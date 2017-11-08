@@ -12,6 +12,10 @@ chrome.extension.onMessage.addListener((request) => {
     case 'saveDataInBackground':
       Main.saveData(request.data);
       break;
+    case 'sendAjaxRequest':
+      Main.sendAjaxRequest();
+      break;
     default:
+      console.warn('Invalid request type', request.type);
   }
 });

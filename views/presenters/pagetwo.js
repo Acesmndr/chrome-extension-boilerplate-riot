@@ -24,7 +24,6 @@ this.clearAll = () => {
 }
 
 this.removeItem = (e) => {
-  console.log(e);
   this.todolist.splice(e.item.i, 1);
   this.sendMessage({
     type: 'saveDataInBackground',
