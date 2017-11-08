@@ -4,12 +4,13 @@
 import * as Main from './main';
 
 chrome.extension.onMessage.addListener((request) => {
+  console.log(request);
   switch (request.type) {
     case 'getDataFromBackground':
-      Main.getData();
+      Main.getData(request.query);
       break;
-    case 'updateTaskInTimer':
-      Main.updateTaskInTimer(request.body);
+    case 'saveDataInBackground':
+      Main.saveData(request.data);
       break;
     default:
   }

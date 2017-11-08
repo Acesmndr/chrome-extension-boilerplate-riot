@@ -6,11 +6,16 @@
     "test": "",
     "dev": "",
     "version": "echo '\n\n\t\tExtension is currently in version '$(yarn run get_version)'\n\n'",
-    "get_version": "node -p -e \"require('./package.json').version\"",
-    "upgrade": "echo '\n>###```version '$VERSION'```\n>* '$CHANGELOG >> changelog.md && yarn version --new-version $VERSION",
-    "pack": "mkdir build;crx pack $NODE_ENV -o build/cf-timer_v$(yarn run get_version)_$NODE_ENV.crx -p key.pem",
-    "development": "NODE_ENV=development webpack;NODE_ENV=development yarn run pack",
-    "production": "NODE_ENV=production webpack;NODE_ENV=production yarn run pack"
+    "get_version": "echo $npm_package_version",
+    "upgrade": "echo '\n>###```version '$EXT_VER'```\n>* '$CHANGELOG >> changelog.md && yarn version --new-version $EXT_VER",
+    "pack": "EXT_NAME=$npm_package_name;EXT_VER=$npm_package_version;mkdir build;crx pack $NODE_ENV -o build/$EXT_NAME-v$EXT_VER-$NODE_ENV.crx -p key.pem",
+    "development": "NODE_ENV=development webpack -w;NODE_ENV=development yarn run pack",
+    "staging": "NODE_ENV=development webpack;NODE_ENV=stagingnxt yarn run pack",
+    "production": "NODE_ENV=production webpack;NODE_ENV=production yarn run pack",
+    "win-pack": "If Not Exist build mkdir build& crx pack %NODE_ENV% -o build/%EXT_NAME%-%EXT_VER%-%NODE_ENV%.crx -p key.pem",
+    "win-development": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=stagingnxt& webpack -w & yarn run win_pack",
+    "win-staging": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=stagingnxt& webpack & yarn run win_pack",
+    "win-production": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=production& webpack & yarn run win_pack"
   },
   "dependencies": {
     "babel-core": "^6.26.0",

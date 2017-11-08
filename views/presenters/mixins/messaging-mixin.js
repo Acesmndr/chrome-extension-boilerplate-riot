@@ -6,7 +6,8 @@ const messageMixin = {
       }
       switch (request.type) {
         case 'update':
-          e.update(request.opts);
+        console.log('update request',request.data);
+          e.update(request.data);
           break;
         case 'route':
           e.unmount(true);

@@ -1,9 +1,9 @@
-import * as baseApi from './base_api';
+import * as baseRequestApi from './base-request-api';
 
 // Get project detail for specific project
-function getFile(url, callback) {
+const getFile = (url, callback) => {
   // obj = {projectId: '', credentials: {}}
-  baseApi.request('GET', url, {}, (response) => {
+  baseRequestApi.request('GET', url, {}, (response) => {
     callback(response);
   });
 }

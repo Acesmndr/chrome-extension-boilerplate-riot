@@ -1,15 +1,15 @@
 /* global chrome */
-clearCache = () => {
+const clearCache = () => {
   chrome.storage.local.clear();
 }
 
-fetch = (getWhat, callback) => {
-  chrome.storage.local.get(getWhat,(lsData) => {
+const fetch = (getWhat, callback) => {
+  chrome.storage.local.get(getWhat,(data) => {
     callback(data);
   });
 };
 
-notify = (params, stopSpinner) => {
+const notify = (params, stopSpinner) => {
   chrome.notifications.create({
     type: 'basic',
     title: params.title || 'Chrome Extension',
@@ -21,22 +21,22 @@ notify = (params, stopSpinner) => {
   });
 }
 
-sendMessage = (msg) => {
+const sendMessage = (msg) => {
   chrome.runtime.sendMessage(msg, () => {
   });
 }
 
-setBadgeIcon = (iconPath) => {
+const setBadgeIcon = (iconPath) => {
   chrome.browserAction.setIcon({path: iconPath});
 }
 
-setBadgeText = (text = 'ext') => {
+const setBadgeText = (text = 'ext') => {
   chrome.browserAction.setBadgeText({
     text: text,
   });
 };
 
-setupContextMenu = (reset) => {
+const setupContextMenu = (reset) => {
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({ id: 'reset_extension', title: 'Reset extension', contexts: ['browser_action'] });
     chrome.contextMenus.onClicked.addListener((info) => {
@@ -47,13 +47,13 @@ setupContextMenu = (reset) => {
   });
 }
 
-setupStartup = (callback) => {
+const setupStartup = (callback) => {
   chrome.runtime.onStartup.addListener(() => {
     callback();
   });
 }
 
-store = (dataObj, callback = () => {}) => {
+const store = (dataObj, callback = () => {}) => {
   chrome.storage.local.set(dataObj, callback);
 }
 

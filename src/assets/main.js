@@ -1,27 +1,27 @@
 /* global window */
 import * as chromeUtils from './chrome-utilities';
-import * as fileRequest from '../api/file-request';
+import * as fileRequest from './api/file-request';
 
-chromeUtils.setupContextMenu(() => { reset(); });
-
-getData = (whatToFetch) => {
+const getData = (whatToFetch) => {
   chromeUtils.fetch(whatToFetch, (data) => {
-    chromeUtils.sendMessage({ type: 'route', data: data });
+    chromeUtils.sendMessage({ type: 'update', data:{todolist: data[whatToFetch]} });
   });
 }
 
-reset = () => {
+const reset = () => {
   chromeUtils.clearCache();
 }
 
-storeData = (whatToStore, callback = () => {}) => {
+const saveData = (whatToStore, callback = () => {}) => {
   chromeUtils.store(whatToStore, () => {
     callback();
   });
 }
 
+chromeUtils.setupContextMenu(() => { reset(); });
+
 export {
   getData,
   reset,
-  storeData,
+  saveData,
 }

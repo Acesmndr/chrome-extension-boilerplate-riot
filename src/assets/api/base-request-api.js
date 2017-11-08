@@ -2,7 +2,7 @@
   Simple Vanilla AJAX
 */
 
-function isValidStatus(status) {
+const isValidStatus = (status) => {
   return /^[2-3][0-9][0-9]$/.test(status);
 }
 
@@ -26,7 +26,7 @@ function parseResponse(requestUrl, response) {
   };
 }
 
-export function request(type, requestUrl, data, callback) {
+export function baseRequestApi(type, requestUrl, data, callback) {
   const parsedRequestUrl = `${BASE_URL}${requestUrl}`;
   const requestObj = new XMLHttpRequest();
   requestObj.timeout = 15000;
