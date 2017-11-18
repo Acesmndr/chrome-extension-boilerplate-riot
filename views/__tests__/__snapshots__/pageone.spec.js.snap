@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hello should mount the tag 1`] = `
+<pageone
+  data-is="pageone"
+>
+  <div
+    class="card"
+  >
+     
+    <div
+      class="content"
+    >
+       
+      <div
+        class="graphic"
+      >
+         
+        <div
+          class="huge"
+        >
+          RIOT CHROME EXTENSION BOILERPLATE
+        </div>
+         
+        <div
+          class="medium"
+        >
+          -acesmndr
+        </div>
+         
+      </div>
+       
+    </div>
+     
+    <div
+      class="content right-align"
+    >
+       
+      <input
+        type="button"
+        value="Send Data Request"
+      />
+       
+      <input
+        type="button"
+        value="Go to page 2"
+      />
+       
+    </div>
+     
+  </div>
+</pageone>
+`;

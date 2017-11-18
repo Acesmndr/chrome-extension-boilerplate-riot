@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Chrome Extension Boilerplate with Riot",
   "scripts": {
-    "test": "",
+    "test": "cd views;jest --config jest.config.json",
+    "test:upgrade": "cd views;jest -u --config jest.config.json",
     "dev": "",
     "version": "echo '\n\n\t\tExtension is currently in version '$(yarn run get_version)'\n\n'",
     "get_version": "echo $npm_package_version",
@@ -16,6 +17,11 @@
     "win-development": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=stagingnxt& webpack -w & yarn run win_pack",
     "win-staging": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=stagingnxt& webpack & yarn run win_pack",
     "win-production": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=production& webpack & yarn run win_pack"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "views"
+    ]
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -36,8 +42,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-jest": "^21.2.0",
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-import": "^2.7.0",
+    "jest": "^21.2.1",
+    "riot-jest-transformer": "^1.0.10"
   }
 }
