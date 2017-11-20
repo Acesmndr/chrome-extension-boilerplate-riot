@@ -1,0 +1,27 @@
+@import './colorpalette';
+
+.form {
+  padding: 16px;
+  font-size: 16px;
+  text-align: center;
+  .title {
+    margin-bottom: 32px;
+    color: $simply-blue;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  input[type='text'] {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+.todolist {
+  li {
+    font-size: 24px;
+    color: #7a818d;
+    &:hover {
+      text-decoration: line-through;
+    }
+  }  
+}

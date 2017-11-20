@@ -1,11 +1,18 @@
 <pageone>
-	<div>
-    Click this link to go to page 2
-		<br>
-		<input type="button" onclick={ pageRedirect } value="Click Me"/>
+	<div class='card'>
+		<div class='content'>
+			<div class='graphic'>
+				<div class='huge'>RIOT CHROME EXTENSION BOILERPLATE</div>
+				<div class='medium'>-acesmndr</div>
+			</div>
+		</div>
+		<div class='content right-align'>
+			<input type='button' onclick={ getAjaxDataFromBackground } value='Send Data Request'/>
+			<input type='button' onclick={ goToSecondPage } value='Go to page 2'/>
+		</div>
 	</div>
-	<style>
-		@import url('assets/css/pageone.css');
+	<style type='scss'>
+		@import 'styles/pageone';
 	</style>
 	<script src="presenters/pageone.js"></script>
 </pageone>

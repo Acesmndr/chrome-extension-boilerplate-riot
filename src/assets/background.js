@@ -1,17 +1,21 @@
-chrome.browserAction.setBadgeText({
-  text: 'ext'
-});
-chrome.storage.local.get(['timer','timerState'],(lsData)=>{
-});
-chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
-});
-chrome.runtime.onStartup.addListener(() => {
-  chrome.storage.local.get(['timer','timerState'],(lsData)=>{
-  });
-});
-chrome.windows.onRemoved.addListener((windowId) => {
-  chrome.storage.local.set({
-    timerState:timerState,
-    timer:{totalTime:totalTime,startSeconds:startSeconds,startTimeInMS:startTimeInMS}
-  });
+/*
+  Responsible for dealing with event listners
+*/
+import * as Main from './main';
+
+chrome.extension.onMessage.addListener((request) => {
+  console.log(request);
+  switch (request.type) {
+    case 'getDataFromBackground':
+      Main.getData(request.query);
+      break;
+    case 'saveDataInBackground':
+      Main.saveData(request.data);
+      break;
+    case 'sendAjaxRequest':
+      Main.sendAjaxRequest('https://reqres.in/api/users');
+      break;
+    default:
+      console.warn('Invalid request type', request.type);
+  }
 });

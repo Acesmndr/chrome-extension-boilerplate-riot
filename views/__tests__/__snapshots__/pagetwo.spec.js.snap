@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page two specs should mount the tag 1`] = `
+<div
+  class="main-body"
+  data-is="pagetwo"
+>
+  <div
+    class="card"
+  >
+     
+    <div
+      class="content"
+    >
+       
+      <div
+        class="form"
+      >
+         
+        <div
+          class="title"
+        >
+          To Do App
+        </div>
+         
+        <input
+          autofocus=""
+          ref="nameInput"
+          required=""
+          type="text"
+        />
+         
+        <input
+          type="button"
+          value="Add"
+        />
+         
+      </div>
+       
+      <ul
+        class="todolist"
+      >
+         
+        <li>
+          batman
+        </li>
+        <li>
+          superman
+        </li>
+        
+         
+      </ul>
+       
+    </div>
+     
+    <div
+      class="content right-align"
+    >
+       
+      <input
+        type="button"
+        value="Clear All"
+      />
+       
+      <input
+        type="button"
+        value="Return to page 1"
+      />
+       
+    </div>
+     
+  </div>
+</div>
+`;
