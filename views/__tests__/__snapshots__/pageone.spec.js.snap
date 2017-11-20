@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`hello should mount the tag 1`] = `
-<pageone
+exports[`Page one specs should mount the tag 1`] = `
+<div
+  class="main-body"
   data-is="pageone"
 >
   <div
@@ -49,5 +50,5 @@ exports[`hello should mount the tag 1`] = `
     </div>
      
   </div>
-</pageone>
+</div>
 `;

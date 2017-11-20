@@ -1,4 +1,6 @@
 # Riot Chrome Extension Boilerplate
+[![Build Status](https://travis-ci.org/Acesmndr/chrome-extension-boilerplate-riot.svg?branch=master)](https://travis-ci.org/Acesmndr/chrome-extension-boilerplate-riot)
+[![license](https://img.shields.io/npm/l/express.svg)]()
 
 A boilerplate for a single page extension/application using Riot framework as MVP and webpack as the module bundler.
 It is created to solve all the problems that we face while building a chrome extension.
