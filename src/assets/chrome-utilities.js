@@ -9,7 +9,7 @@ const fetch = (getWhat, callback) => {
   });
 };
 
-const notify = (params, stopSpinner) => {
+const notify = (params) => {
   chrome.notifications.create({
     type: 'basic',
     title: params.title || 'Chrome Extension',

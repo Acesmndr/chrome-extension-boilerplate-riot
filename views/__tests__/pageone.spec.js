@@ -1,13 +1,14 @@
 import * as riot from 'riot';
 import pageone from '../pageone.tag';
- 
+
+const messageMixin = {
+    setupListener: (e) => jest.fn(),
+    sendMessage: (msg, callback = () => { }) => jest.fn(),
+    notify: (params, callback) => jest.fn(),
+}; 
 describe('hello', () => {
     beforeAll( () => {
-        riot.mixin('messageMixin', {
-            setupListener: (e) => {
-                console.log('');
-            }
-        })
+        riot.mixin('messageMixin', messageMixin);
         // create mounting point 
         const elem = document.createElement('pageone');
         document.body.appendChild(elem)

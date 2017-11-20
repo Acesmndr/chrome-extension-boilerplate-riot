@@ -13,7 +13,7 @@ chrome.extension.onMessage.addListener((request) => {
       Main.saveData(request.data);
       break;
     case 'sendAjaxRequest':
-      Main.sendAjaxRequest();
+      Main.sendAjaxRequest('https://reqres.in/api/users');
       break;
     default:
       console.warn('Invalid request type', request.type);

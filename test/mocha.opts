@@ -1,0 +1,2 @@
+--require babel-core/register
+--require ./test/config/mocha-chrome.conf.js
