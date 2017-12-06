@@ -1,9 +1,11 @@
+addons:
+  code_climate:
+    repo_token: 923414151822490b3b8b046ebfb5feeb43fac1452cbb1062a050e1581c4aca25
 language: node_js
 node_js:
   - 8.9.0
-branches:
-  only:
-    - master
-    - webpack-bundle-implementation-v1
 install:
   - yarn install
+after_script:
+  - yarn add -g codeclimate-test-reporter
+  - codeclimate-test-reporter < ./coverage/lcov.info
