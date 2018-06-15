@@ -11,4 +11,4 @@ before_script:
 script:
   - yarn test
 after_script:
-  - ./cc-test-reporter after-build -t "lcov" --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build -t "lcov" --exit-code views/coverage/lcov.info
