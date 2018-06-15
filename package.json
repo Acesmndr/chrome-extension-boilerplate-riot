@@ -6,17 +6,11 @@
     "test": "mocha;cd views;jest --config jest.config.json --coverage",
     "test:upgrade": "cd views;jest -u --config jest.config.json",
     "dev": "",
-    "version": "echo '\n\n\t\tExtension is currently in version '$(yarn run get_version)'\n\n'",
-    "get_version": "echo $npm_package_version",
-    "upgrade": "echo '\n>###```version '$EXT_VER'```\n>* '$CHANGELOG >> changelog.md && yarn version --new-version $EXT_VER",
-    "pack": "EXT_NAME=$npm_package_name;EXT_VER=$npm_package_version;mkdir build;crx pack $NODE_ENV -o build/$EXT_NAME-v$EXT_VER-$NODE_ENV.crx -p key.pem",
-    "development": "NODE_ENV=development webpack -w;NODE_ENV=development yarn run pack",
-    "staging": "NODE_ENV=development webpack;NODE_ENV=stagingnxt yarn run pack",
-    "production": "NODE_ENV=production webpack;NODE_ENV=production yarn run pack",
-    "win-pack": "If Not Exist build mkdir build& crx pack %NODE_ENV% -o build/%EXT_NAME%-%EXT_VER%-%NODE_ENV%.crx -p key.pem",
-    "win-development": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=stagingnxt& webpack -w & yarn run win_pack",
-    "win-staging": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=stagingnxt& webpack & yarn run win_pack",
-    "win-production": "set EXT_NAME=%npm_package_name%& set EXT_VER=%npm_package_version%& set NODE_ENV=production& webpack & yarn run win_pack"
+    "version:show": "echo '\n\n\t\tExtension is currently in version '$(echo $npm_package_version)'\n\n'",
+    "version:upgrade": "echo '\n>###```version '$EXT_VER'```\n>* '$CHANGELOG >> changelog.md && yarn version --new-version $EXT_VER",
+    "build:development": "cross-env NODE_ENV=development webpack -w",
+    "build:staging": "NODE_ENV=staging webpack && mkdir build && cross-env crx pack staging -o build/$npm_package_name-v$npm_package_version-staging.crx -p key.pem",
+    "build:production": "NODE_ENV=production webpack && mkdir build && cross-env crx pack production -o build/$npm_package_name-v$npm_package_version.crx -p key.pem"
   },
   "jest": {
     "moduleDirectories": [
@@ -30,16 +24,19 @@
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.2.0",
     "crx": "^3.2.1",
     "css-loader": "^0.28.7",
     "glob": "^7.1.2",
     "node-sass": "^4.5.3",
-    "riot": "^3.7.0",
+    "riot": "^3.10.1",
+    "riot-tag-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
-    "webpack": "^3.5.5"
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.6"
   },
-  "author": "",
+  "author": "acesmndr",
   "license": "ISC",
   "devDependencies": {
     "babel-jest": "^21.2.0",
