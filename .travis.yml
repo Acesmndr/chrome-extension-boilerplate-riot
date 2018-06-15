@@ -8,4 +8,4 @@ install:
   - yarn install
 after_success:
   - yarn add --dev codeclimate-test-reporter
-  - codeclimate-test-reporter < ./views/coverage/lcov.info
+  - codeclimate-test-reporter < ./views/coverage/coverage-final.json
