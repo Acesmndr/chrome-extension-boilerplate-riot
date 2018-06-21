@@ -9,6 +9,6 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - mocha;cd views;jest --config jest.config.json --coverage
+  - yarn test
 after_script:
   - ./cc-test-reporter after-build --exit-code ./coverage/lcov.info
