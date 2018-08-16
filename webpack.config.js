@@ -53,7 +53,7 @@ module.exports = [{
     rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      options: { presets: ['es2015', 'stage-0'] },
+      options: { presets: ['env', 'stage-0'] },
     }],
   },
   plugins: [cleanPlugin, copyPlugin, defineUrlPlugin],
@@ -80,7 +80,7 @@ module.exports = [{
         test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'riot-tag-loader', enforce: 'pre',
       },
       {
-        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['es2015'] },
+        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['env'] },
       },
       {
         test: /\.scss$/,
