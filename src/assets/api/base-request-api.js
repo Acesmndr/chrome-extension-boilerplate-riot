@@ -26,16 +26,24 @@ const parseResponse = (requestUrl, response) => {
   };
 }
 
-export function request(type, requestUrl, data, callback) {
-  const parsedRequestUrl = requestUrl;
-  const requestObj = new XMLHttpRequest();
-  requestObj.timeout = 15000;
-  requestObj.open(type.toUpperCase(), parsedRequestUrl, true);
-  setContentTypeHeader(requestObj);
-  requestObj.onreadystatechange = () => {
-    if (requestObj.readyState === 4) {
-      callback(parseResponse(requestUrl, requestObj));
+export function request(type, requestUrl, data) {
+  return new Promise((resolve, reject) => {
+    const parsedRequestUrl = requestUrl;
+    const requestObj = new XMLHttpRequest();
+    requestObj.timeout = 15000;
+    requestObj.open(type.toUpperCase(), parsedRequestUrl, true);
+    setContentTypeHeader(requestObj);
+    requestObj.onreadystatechange = () => {
+      if (requestObj.readyState === 4) {
+        resolve(parseResponse(requestUrl, requestObj));
+      }
+    };
+    requestObj.onerror = () => {
+      reject({
+        status: requestObj.status,
+        responseObj: JSON.parse(requestObj.responseText || 'An error occurred'),
+      });
     }
-  };
-  requestObj.send(JSON.stringify(data));
+    requestObj.send(JSON.stringify(data));
+  });
 }

@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const glob = require('glob');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const ENV = process.env.NODE_ENV;
 const baseUrl = () => {
@@ -37,20 +38,28 @@ const cleanPlugin = new CleanWebpackPlugin(['dist', 'production', 'staging', 'bu
   verbose: false,
 });
 const defineUrlPlugin = new webpack.DefinePlugin({ BASE_URL: JSON.stringify(baseUrl()) });
-const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({ comments: false, compress: { drop_console: ENV === 'production' }, minimize: true });
+const uglifyPlugin = new UglifyJsPlugin({ 
+  uglifyOptions: {
+    comments: false, compress: { drop_console: ENV === 'production' }, minimize: true
+  },
+});
 
 module.exports = [{
   entry: {
     background: [`${__dirname}/src/assets/background.js`],
   },
+  mode: (ENV === 'production') ? 'production' : 'none',
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      options: { presets: ['es2015', 'stage-0'] },
+      options: { presets: ['env', 'stage-0'] },
     }],
   },
-  plugins: (ENV === 'production') ? [cleanPlugin, copyPlugin, defineUrlPlugin, uglifyPlugin] : [cleanPlugin, copyPlugin, defineUrlPlugin],
+  plugins: [cleanPlugin, copyPlugin, defineUrlPlugin],
+  optimization: {
+    minimizer: [uglifyPlugin],
+  },
   output: {
     filename: '[name].js',
     path: `${__dirname}/${ENV}/assets/`,
@@ -59,16 +68,19 @@ module.exports = [{
   entry: {
     'bundle.min': ['./views/presenters/mixins/messaging-mixin.js'].concat(glob.sync('./views/*.tag'), ['./views/presenters/controllers/main.js']),
   },
-  resolveLoader: {
-    modules: ['node_modules', `${__dirname}/loaders`],
+  mode: (ENV === 'production') ? 'production' : 'none',
+  resolve: {
+    alias: {
+      riot: 'riot/riot.csp.js',
+    }
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'riot-loader', enforce: 'pre',
+        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'riot-tag-loader', enforce: 'pre',
       },
       {
-        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['es2015'] },
+        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['env'] },
       },
       {
         test: /\.scss$/,
@@ -82,7 +94,10 @@ module.exports = [{
       }
     ],
   },
-  plugins: (ENV === 'production') ? [defineUrlPlugin, uglifyPlugin] : [defineUrlPlugin],
+  plugins: [defineUrlPlugin],
+  optimization: {
+    minimizer: [uglifyPlugin],
+  },
   output: {
     filename: '[name].js',
     path: `${__dirname}/${ENV}/assets/`,

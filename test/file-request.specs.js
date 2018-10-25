@@ -16,8 +16,12 @@ describe('File Request module', () => {
         baseApi.request.restore();
     });
     describe('getFile function', () => {
-        it('should do a GET request to the url', () => {
-            fileRequest.getFile(URL, () => { });
+        it('should do a GET request to the url', (done) => {
+            baseApi.request.resolves('Content of the file');
+            fileRequest.getFile(URL, () => { }).then((fileContent) => {
+                assert.equal(fileContent, 'Content of the file');
+                done();
+            });
             assert.ok(baseApi.request.calledWith('GET', 'http://acesmndr.io/file', {}));
         });
     });

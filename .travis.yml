@@ -1,11 +1,14 @@
-addons:
-  code_climate:
-    repo_token: 923414151822490b3b8b046ebfb5feeb43fac1452cbb1062a050e1581c4aca25
+env:
+  global:
+    - CC_TEST_REPORTER_ID=f4abd1a2e7875429c4a150f81ed9127e0507cb26b9700120d40e567d3dbcb3e4
 language: node_js
 node_js:
-  - 8.9.0
-install:
-  - yarn install
-after_success:
-  - yarn add --dev codeclimate-test-reporter
-  - codeclimate-test-reporter < ./views/coverage/lcov.info
+  - 8.11.3
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - yarn test
+after_script:
+  - ./cc-test-reporter after-build --exit-code 0

@@ -8,3 +8,4 @@ src/assets/views.js
 src/assets/css/main.css
 src/background.js
 yarn-error.log
+coverage
