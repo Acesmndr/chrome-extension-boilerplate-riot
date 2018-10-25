@@ -35,33 +35,36 @@ describe('Common Methods', () => {
     });
     
     describe('sendAjaxRequest function', () => {
-        it('should send an ajax request and display returned data in a notification', () => {
-            const ajaxRequestStub = sinon.stub(fileRequest, 'getFile').callsFake((params, callback) => {
-                const response = {
-                    data: 'acesmndr'
-                }
-                callback(response);
+        it('should send an ajax request and display returned data in a notification', (done) => {
+            sinon.stub(fileRequest, 'getFile');
+            fileRequest.getFile.resolves({
+                data: 'acesmndr'
             });
             const notifySpy = sinon.spy(chromeUtils, 'notify');
-            Main.sendAjaxRequest('url');
-            assert.ok(ajaxRequestStub.calledOnce);
-            assert.ok(notifySpy.calledOnce);
-            assert.ok(notifySpy.calledWith({ title: 'Background AJAX request successful', message: '{"data":"acesmndr"}' }));
-            notifySpy.restore();
-            ajaxRequestStub.restore();
+            Main.sendAjaxRequest('url').then(() => {
+                assert.ok(fileRequest.getFile.calledOnce);
+                assert.ok(notifySpy.calledOnce);
+                assert.ok(notifySpy.calledWith({ title: 'Background AJAX request successful', message: '{"data":"acesmndr"}' }));
+                notifySpy.restore();
+                fileRequest.getFile.restore();
+                done();
+            });
         });
     });
     describe('getData function', () => {
-        it('should get the data from the local storage', () => {
+        it('should get the data from the local storage', (done) => {
             sinon.stub(chromeUtils, 'fetch');
+            chromeUtils.fetch.resolves({ key: 'value' });
             Main.getData('key');
             assert.ok(chromeUtils.fetch.calledWith('key'));
             chromeUtils.fetch.restore();
+            done();
         });
     });
    describe('saveData function', () => {
         it('should store the data sent in local storage', () => {
             sinon.stub(chromeUtils, 'store');
+            chromeUtils.store.resolves();
             Main.saveData({key: 'value'});
             assert.ok(chromeUtils.store.calledWith({ key: 'value' }));
             chromeUtils.store.restore();

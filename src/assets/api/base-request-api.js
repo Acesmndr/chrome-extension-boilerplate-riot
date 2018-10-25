@@ -39,7 +39,10 @@ export function request(type, requestUrl, data) {
       }
     };
     requestObj.onerror = () => {
-      reject('An error occurred');
+      reject({
+        status: requestObj.status,
+        responseObj: JSON.parse(requestObj.responseText || 'An error occurred'),
+      });
     }
     requestObj.send(JSON.stringify(data));
   });
