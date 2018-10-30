@@ -9,3 +9,6 @@
 >* Rewrite with promises
 >* Upgrade to Webpack version 4
 >* Add tests for full coverage
+
+>###```version 2.1.0```
+>* Updated the packages and Readme along with the example todo app
