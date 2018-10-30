@@ -2,7 +2,7 @@
 	<div class='card'>
 		<div class='content'>
 			<div class='graphic'>
-				<div class='title'>Chrome Extension Boilerplate</div>
+				<div class='title'>Riot Chrome Extension Boilerplate</div>
 				<img class='illustration' src='assets/img/illustration.svg' />
 				<div class='author'>acesmndr@gmail.com</div>
 			</div>

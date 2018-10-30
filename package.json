@@ -4,7 +4,8 @@
   "description": "Chrome Extension Boilerplate with Riot",
   "scripts": {
     "test": "mocha -b;cd views;jest --config jest.config.json --coverage",
-    "test:upgrade": "cd views;jest -u --config jest.config.json",
+    "test:bg": "mocha -b",
+    "test:views": "cd views;jest --config jest.config.json",
     "dev": "",
     "version:show": "echo '\n\n\t\tExtension is currently in version '$(echo $npm_package_version)'\n\n'",
     "version:upgrade": "echo '\n>###```version '$VERSION'```\n>* '$CHANGELOG >> changelog.md && yarn version --new-version $VERSION",

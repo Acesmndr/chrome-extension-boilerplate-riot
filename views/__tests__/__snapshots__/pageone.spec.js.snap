@@ -18,15 +18,20 @@ exports[`Page one specs should mount the tag 1`] = `
       >
          
         <div
-          class="huge"
+          class="title"
         >
-          RIOT CHROME EXTENSION BOILERPLATE
+          Riot Chrome Extension Boilerplate
         </div>
          
+        <img
+          class="illustration"
+          src="assets/img/illustration.svg"
+        />
+         
         <div
-          class="medium"
+          class="author"
         >
-          -acesmndr
+          acesmndr@gmail.com
         </div>
          
       </div>

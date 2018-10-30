@@ -19,7 +19,7 @@ describe('Common Methods', () => {
         };
     });
     beforeEach(() => {
-        global.BASE_URL = 'asdfasdfasdf';
+        global.BASE_URL = 'acesmndr.io';
         clock = sinon.useFakeTimers(now.getTime());
         chrome.flush();
     });

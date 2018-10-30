@@ -31,16 +31,15 @@ this.clearAll = () => {
 }
 
 this.removeItem = (e) => {
-  const updatedList = this.todolist.slice(e.item.i, 1);
+  let itemList = this.todolist;
+  itemList.splice(e.item.i, 1);
   this.update({
-    todolist: updatedList,
-    containsItem: !updatedList.length, 
-  })
-  this.todolist.splice(e.item.i, 1);
-  this.empty = !!this.todolist.length;
+    todolist: itemList,
+    containsItem: !!itemList.length, 
+  });
   this.sendMessage({
     type: 'saveDataInBackground',
-    data: {todolist: this.todolist},
+    data: {todolist: itemList},
   });
 }
 
