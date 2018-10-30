@@ -12,6 +12,9 @@ chrome.extension.onMessage.addListener((request) => {
     case 'saveDataInBackground':
       Main.saveData(request.data);
       break;
+    case 'removeAllDataInBackground':
+      Main.reset();
+      break;
     case 'sendAjaxRequest':
       Main.sendAjaxRequest('https://reqres.in/api/users');
       break;

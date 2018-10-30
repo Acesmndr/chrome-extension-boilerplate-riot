@@ -24,7 +24,10 @@ input[type='button'], input[type='submit']  {
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  background: #0091EA;
+  background: $simply-purple;
   color: white;
   box-shadow: 1px 1px 2px #ccc;
+  &:hover {
+    filter: brightness(1.5);
+  }
 }

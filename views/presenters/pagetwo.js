@@ -1,4 +1,5 @@
 this.todolist = opts.data || [];
+this.containsItem = !!this.todolist.length;
 this.goToFirstPage = () => {
   riot.mount('.main-body', 'pageone');
 }
@@ -8,7 +9,10 @@ this.addItem = () => {
   if (item === '') {
     return;
   }
-  this.todolist.push(item);
+  this.update({
+    todolist: [...this.todolist, item],
+    containsItem: true,
+  });
   this.sendMessage({
     type: 'saveDataInBackground',
     data: {todolist: this.todolist},
@@ -17,14 +21,23 @@ this.addItem = () => {
 }
 
 this.clearAll = () => {
-  this.todolist = [];
+  this.update({
+    todolist: [],
+    containsItem: false
+  });
   this.sendMessage({
     type: 'removeAllDataInBackground',
   });
 }
 
 this.removeItem = (e) => {
+  const updatedList = this.todolist.slice(e.item.i, 1);
+  this.update({
+    todolist: updatedList,
+    containsItem: !updatedList.length, 
+  })
   this.todolist.splice(e.item.i, 1);
+  this.empty = !!this.todolist.length;
   this.sendMessage({
     type: 'saveDataInBackground',
     data: {todolist: this.todolist},

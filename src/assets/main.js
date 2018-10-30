@@ -4,7 +4,7 @@ import * as fileRequest from './api/file-request';
 
 const getData = (whatToFetch) => {
   chromeUtils.fetch(whatToFetch).then((storeData) => {
-    chromeUtils.sendMessage({ type: 'update', data:{todolist: storeData[whatToFetch]} });
+    chromeUtils.sendMessage({ type: 'update', data: { todolist: storeData[whatToFetch], containsItem: !!storeData[whatToFetch].length} });
   }).catch((error) => {
     reject(error);
   });
