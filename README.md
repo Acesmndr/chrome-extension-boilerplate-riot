@@ -59,22 +59,15 @@ yarn install
 
 ## Building the extension
 
-To build the extension for a certain environment run the following command
-
-MAC and LINUX
+It supports cross platform development. 
 
 ```
-yarn run [development/staging/production]
-```
-
-Windows
-
-```
-yarn run [win-development/win-staging/win-production]
+yarn build:[development/staging/production]
+// eg: yarn build:development
 ```
 
 It builds the extension files in the folder for the environment you passed as well as builds the crx extension in the build folder.
-In `development` and `win-development` builds webpack keeps watching over the files and rebuilds if any changes are made. 
+In `development` builds webpack keeps watching over the files and rebuilds if any changes are made. 
 
 ### Loading the extension
 
