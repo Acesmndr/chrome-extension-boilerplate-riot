@@ -13,6 +13,11 @@ It is created to solve all the problems that we face while building a chrome ext
 * All asynchronous tasks in the UI are delegated to the background so that they aren't lost when the popup is closed
 * Communication between background and popup has been simplified
 
+### Screenshots
+><img width="200" alt="Main Page" src="https://user-images.githubusercontent.com/4254571/47734356-4a055700-dc92-11e8-86fb-07bb82a862f0.png">
+><img width="200" alt="Todo App" src="https://user-images.githubusercontent.com/4254571/47734354-496cc080-dc92-11e8-9461-7ffa249f4d38.png">
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
