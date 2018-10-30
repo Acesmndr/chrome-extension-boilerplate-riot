@@ -16,10 +16,14 @@ div{
 }
 
 .nav-wrapper {
-  height: 30px;
+  height: 32px;
   background: $greyish-blue;
-  margin: -8px -8px 0px -8px;
   color: white;
   font-size: 24px;
   padding: 8px;
+  box-shadow: 1px 1px 3px #ccc;
+}
+
+.brand-logo {
+  padding-left: 8px;
 }
