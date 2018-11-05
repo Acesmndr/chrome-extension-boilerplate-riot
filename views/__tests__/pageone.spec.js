@@ -28,8 +28,8 @@ describe('Page one specs', () => {
     });
 
     it('should have a title text', () => {
-        expect(document.querySelector('.graphic .huge').textContent).toBe('RIOT CHROME EXTENSION BOILERPLATE');
-        expect(document.querySelector('.graphic .medium').textContent).toBe('-acesmndr');
+        expect(document.querySelector('.graphic .title').textContent).toBe('Riot Chrome Extension Boilerplate');
+        expect(document.querySelector('.graphic .author').textContent).toBe('acesmndr@gmail.com');
     });
 
     it('should have two buttons', () => {

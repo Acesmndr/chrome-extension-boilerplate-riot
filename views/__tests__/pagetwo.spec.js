@@ -29,7 +29,7 @@ describe('Page two specs', () => {
     });
 
     it('should have a title text', () => {
-        expect(document.querySelector('.form .title').textContent).toBe('To Do App');
+        expect(document.querySelector('.form .title').textContent).toBe('To Do');
     });
 
     it('should have a input text field', () => {

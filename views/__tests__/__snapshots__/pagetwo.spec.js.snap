@@ -20,41 +20,45 @@ exports[`Page two specs should mount the tag 1`] = `
         <div
           class="title"
         >
-          To Do App
+          To Do
         </div>
+         
+        <ul
+          class="todolist"
+        >
+           
+          <li>
+            batman
+          </li>
+          <li>
+            superman
+          </li>
+          
+           
+        </ul>
+         
+        
          
         <input
           autofocus=""
+          placeholder="Add item"
           ref="nameInput"
           required=""
           type="text"
         />
          
         <input
+          class="add-btn"
           type="button"
-          value="Add"
+          value="+"
         />
          
       </div>
        
-      <ul
-        class="todolist"
-      >
-         
-        <li>
-          batman
-        </li>
-        <li>
-          superman
-        </li>
-        
-         
-      </ul>
-       
     </div>
      
     <div
-      class="content right-align"
+      class="content right-align buttons"
     >
        
       <input

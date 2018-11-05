@@ -1,6 +1,7 @@
 @import './colorpalette';
 body {
   background: $default-white;
+  margin: 0;
 }
 
 .card {
@@ -10,7 +11,7 @@ body {
   border-radius: 2px;
   box-shadow: 1px 1px 4px grey;
   .content {
-    margin: 8px 0px;
+    margin: 8px 0;
   }
 }
 
@@ -21,8 +22,12 @@ body {
 input[type='button'], input[type='submit']  {
   padding: 12px 16px;
   font-size: 16px;
-  border-radius: 2px;
-  background: $simply-blue;
+  border: none;
+  border-radius: 5px;
+  background: $simply-purple;
   color: white;
-  box-shadow: 1px 2px 4px #ccc
+  box-shadow: 1px 1px 2px #ccc;
+  &:hover {
+    filter: brightness(1.5);
+  }
 }

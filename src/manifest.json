@@ -1,7 +1,7 @@
 {
   "name": "Chrome Extension Boilerplate with Riot",
   "description": "Chrome Extension with RIOT MVP framework",
-  "version": "1.0.0",
+  "version": "EXTENSION_VERSION",
   "background": {
     "persistent": true,
     "page": "background.html"

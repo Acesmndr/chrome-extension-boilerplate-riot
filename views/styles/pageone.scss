@@ -1,15 +1,18 @@
 @import './colorpalette';
 .graphic {
-  background: #d32978;
-  padding: 16px;
-  color: white;
-  // margin: -16px -16px 0px -16px;
-  .huge {
-    font-size: 62px;
+  padding: 4px;
+  color: grey;
+  text-align: center;
+  .title {
+    font-size: 20px;
   }
-  .medium {
+  .illustration {
+    width: 300px;
+    margin: 24px 0 8px;
+  }
+  .author {
     text-align: right;
-    font-size: 32px;
-    opacity: 0.2;
+    font-size: 8px;
+    opacity: 0.5;
   }
 }
