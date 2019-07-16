@@ -1,6 +1,6 @@
 {
   "name": "chrome_extension_riot",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Chrome Extension Boilerplate with Riot",
   "scripts": {
     "test": "mocha -b;cd views;jest --config jest.config.json --coverage",
