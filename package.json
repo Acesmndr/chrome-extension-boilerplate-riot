@@ -54,5 +54,8 @@
     "riot-jest-transformer": "^2.0.0",
     "sinon": "^7.1.0",
     "sinon-chrome": "^3.0.1"
+  },
+  "resolutions": {
+    "**/**/lodash": "~4.17.12"
   }
 }
