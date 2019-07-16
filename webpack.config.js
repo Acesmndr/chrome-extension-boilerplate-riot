@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const glob = require('glob');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const ENV = process.env.NODE_ENV;
@@ -33,7 +33,8 @@ const copyPlugin = new CopyWebpackPlugin([{
   },
   to: '../',
 }]);
-const cleanPlugin = new CleanWebpackPlugin(['dist', 'production', 'staging', 'build', 'development'], {
+const cleanPlugin = new CleanWebpackPlugin({
+  cleanOnceBeforeBuildPatterns: ['dist', 'production', 'staging', 'build', 'development'],
   root: __dirname,
   verbose: false,
 });
@@ -53,7 +54,7 @@ module.exports = [{
     rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      options: { presets: ['env', 'stage-0'] },
+      options: { presets: ['@babel/preset-env'] },
     }],
   },
   plugins: [cleanPlugin, copyPlugin, defineUrlPlugin],
@@ -80,7 +81,7 @@ module.exports = [{
         test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'riot-tag-loader', enforce: 'pre',
       },
       {
-        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['env'] },
+        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['@babel/preset-env'] },
       },
       {
         test: /\.scss$/,
