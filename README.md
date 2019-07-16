@@ -101,17 +101,22 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 Run the following command to check the current version of the extension
 ```
-yarn run version
+yarn version:show
 ```
 Then to upgrade the version along with a changelog run the following command
 ```
-CHANGELOG="Changes Made in the extension" VERSION="5.0.0" yarn run upgrade
+CHANGELOG="Changes Made in the extension" VERSION="5.0.0" yarn version:upgrade
 ```
+The changelog file needs to be committed manually.
 
 
 ## Built With
 
-* [RIOT](http://riotjs.com/) - Frontend MVP Framework
+* [Riot v3](https://v3.riotjs.now.sh/) - Frontend MVP Framework
 * [Webpack](https://webpack.js.org/concepts/) - Module Bundler
 * [Yarn](https://yarnpkg.com/en) - The package manager
 * [Material Design](https://material.io/guidelines/material-design/introduction.html#introduction-goals) - Design Principles
+
+### Note
+It uses the most stable version of Riot.js v3.
+Moving to Riot.js v4 requires another complete rewrite. Will start working on it soon...
