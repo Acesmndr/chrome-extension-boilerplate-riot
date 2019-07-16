@@ -12,3 +12,6 @@
 
 >###```version 2.1.0```
 >* Updated the packages and Readme along with the example todo app
+
+>###```version 2.2.0```
+>* Upgraded dependencies and fixed vulnerabilities. Upgrade babel to version 7
