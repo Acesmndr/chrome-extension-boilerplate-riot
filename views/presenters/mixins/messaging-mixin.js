@@ -22,7 +22,7 @@ const messageMixin = {
     chrome.runtime.sendMessage(msg, callback);
   },
   notify: (params, callback) => {
-    chrome.notifications.create(params.id || 'cftimer', {
+    chrome.notifications.create(params.id || 'notification_id', {
       type: 'basic',
       title: params.title || '',
       message: params.message || '',
