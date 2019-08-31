@@ -8,15 +8,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 registerPreprocessor('css', 'scss', function (code, { options }) {
   const { file } = options
-  console.log(options);
-
-  console.log('Compile the sass code in', file)
-
+  
   const { css } = sass.renderSync({
     data: code
   })
-
-  console.log(css.toString());
 
   return {
     code: css.toString(),
@@ -37,13 +32,16 @@ const baseUrl = () => {
 const packageJSON = require('./package.json');
 
 const copyPlugin = new CopyWebpackPlugin([{
-  from: './src/assets/img/',
+  from: './src/background/images/',
   to: 'img/',
 }, {
-  from: './src/popup.html',
+  from: './src/popup/images/',
+  to: 'img/',
+}, {
+  from: './src/popup/index.html',
   to: '../',
 }, {
-  from: './src/background.html',
+  from: './src/background/index.html',
   to: '../',
 }, {
   from: './src/manifest.json',
@@ -67,7 +65,7 @@ const uglifyPlugin = new UglifyJsPlugin({
 
 module.exports = [{
   entry: {
-    background: [`${__dirname}/src/assets/background.js`],
+    background: [`${__dirname}/src/background/index.js`],
   },
   mode: (ENV === 'production') ? 'production' : 'none',
   module: {

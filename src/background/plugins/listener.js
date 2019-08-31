@@ -1,7 +1,7 @@
 /*
   Responsible for dealing with event listners
 */
-import * as Main from '../main';
+import * as Main from '../methods/main';
 
 export default function() {
   chrome.runtime.onMessage.addListener((request) => {
