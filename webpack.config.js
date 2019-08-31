@@ -1,8 +1,28 @@
 const webpack = require('webpack');
+const { registerPreprocessor } = require('@riotjs/compiler');
+const sass = require('node-sass');
 const glob = require('glob');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+registerPreprocessor('css', 'scss', function (code, { options }) {
+  const { file } = options
+  console.log(options);
+
+  console.log('Compile the sass code in', file)
+
+  const { css } = sass.renderSync({
+    data: code
+  })
+
+  console.log(css.toString());
+
+  return {
+    code: css.toString(),
+    map: null
+  }
+})
 
 const ENV = process.env.NODE_ENV;
 const baseUrl = () => {
@@ -67,32 +87,42 @@ module.exports = [{
   },
 }, {
   entry: {
-    'bundle.min': ['./views/presenters/mixins/messaging-mixin.js'].concat(glob.sync('./views/*.tag'), ['./views/presenters/controllers/main.js']),
+    'interface.min': ['./src/popup/main.js'].concat(glob.sync('./src/popup/**/*.riot')),
+    // 'bundle.min': ['./views/presenters/mixins/messaging-mixin.js'].concat(glob.sync('./views/*.tag'), ['./views/presenters/controllers/main.js']),
   },
   mode: (ENV === 'production') ? 'production' : 'none',
-  resolve: {
-    alias: {
-      riot: 'riot/riot.csp.js',
-    }
-  },
   module: {
     rules: [
       {
-        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'riot-tag-loader', enforce: 'pre',
-      },
-      {
-        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['@babel/preset-env'] },
-      },
-      {
-        test: /\.scss$/,
+        test: /\.riot$/,
+        exclude: /node_modules/,
         use: [{
-            loader: "style-loader"
-        }, {
-            loader: "css-loader"
-        }, {
-            loader: "sass-loader"
-        }]
-      }
+          loader: '@riotjs/webpack-loader',
+          options: {
+            hot: true,
+            css: 'scss',
+          }
+        }],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'] 
+        },
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
     ],
   },
   plugins: [defineUrlPlugin],
