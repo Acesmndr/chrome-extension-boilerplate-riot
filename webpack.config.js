@@ -1,10 +1,12 @@
-const webpack = require('webpack');
-const { registerPreprocessor } = require('@riotjs/compiler');
-const sass = require('node-sass');
 const glob = require('glob');
+const sass = require('node-sass');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { registerPreprocessor } = require('@riotjs/compiler');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const ENV = process.env.NODE_ENV;
 
 registerPreprocessor('css', 'scss', function (code, { options }) {
   const { file } = options
@@ -19,7 +21,6 @@ registerPreprocessor('css', 'scss', function (code, { options }) {
   }
 })
 
-const ENV = process.env.NODE_ENV;
 const baseUrl = () => {
   switch (ENV) {
     case 'production':
@@ -86,7 +87,6 @@ module.exports = [{
 }, {
   entry: {
     'interface.min': ['./src/popup/index.js'].concat(glob.sync('./src/popup/**/*.riot')),
-    // 'bundle.min': ['./views/presenters/mixins/messaging-mixin.js'].concat(glob.sync('./views/*.tag'), ['./views/presenters/controllers/main.js']),
   },
   mode: (ENV === 'production') ? 'production' : 'none',
   module: {
