@@ -1,18 +1,54 @@
 import helper from '../../helper';
+import { sendMessage } from '../../../chrome/chrome-utils';
 
 export default {
   state: {
-    message: 'Hello there'
+    todolist: [],
+    containsItem: false,
   },
-  onBeforeMount(props, state) {
-    console.assert(this.state === state) // ok!
-    console.log(state.message) // Hello there
+  addItem() {
+    const item = this.$('input[type="text"]').value;
+    if (item === '') {
+      return;
+    }
+    sendMessage({
+      type: 'saveDataInBackground',
+      data: { todolist: [...this.state.todolist, item] },
+    });
+    this.$('input[type="text"]').value = '';
+  },
+  removeItem(e) {
+    let itemList = this.state.todolist;
+    debugger;
+    itemList.splice(Number(e.target.getAttribute('itemNo')), 1);
+    sendMessage({
+      type: 'saveDataInBackground',
+      data: { todolist: itemList },
+    });
+  },
+  clearAll() {
+    sendMessage({
+      type: 'removeAllDataInBackground',
+    })
   },
   goToFirstPage() {
     helper.route('pageone');
   },
-  onMounted() {
-    // debugger;
-    // riot.mount('pagetwo');
+  onBeforeMount(props, state) {
+    // state = {
+    //   todolist: props.todolist || [],
+    //   containsItem: props.containsItem || false,
+    // }
+    sendMessage({
+      type: 'getDataFromBackground',
+      query: 'todolist'
+    });
+  },
+  onBeforeUpdate(props, state) {
+    console.log(props, state);
+    state = {
+      todolist: props.todolist || [],
+      containsItem: props.containsItem || false,
+    }
   }
 }

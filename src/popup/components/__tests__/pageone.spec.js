@@ -1,5 +1,5 @@
 import * as riot from 'riot';
-import pageone from '../pageone.tag';
+import pageone from '../pageone/pageone.riot';
 
 const mockFn = jest.fn();
 const messageMixin = {
@@ -15,7 +15,7 @@ describe('Page one specs', () => {
         const elem = document.createElement('div');
         elem.className = "main-body";
         document.body.appendChild(elem)
-        riot.mount(elem, 'pageone');
+        riot.mount(elem, {}, pageone);
     });
     
     

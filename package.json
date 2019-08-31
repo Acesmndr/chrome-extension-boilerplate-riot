@@ -5,7 +5,7 @@
   "scripts": {
     "test": "mocha -b;cd views;jest --config jest.config.json --coverage",
     "test:bg": "mocha -b",
-    "test:views": "cd views;jest --config jest.config.json",
+    "test:views": "jest",
     "dev": "",
     "inter": "riot",
     "version:show": "echo '\n\n\t\tExtension is currently in version '$(echo $npm_package_version)'\n\n'",
@@ -16,7 +16,7 @@
   },
   "jest": {
     "moduleDirectories": [
-      "views"
+      "src/popup"
     ]
   },
   "dependencies": {

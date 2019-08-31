@@ -2,7 +2,7 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
 import * as fileRequest from '../src/assets/api/file-request';
-import * as chromeUtils from '../src/assets/chrome-utilities';
+import * as chromeUtils from '../src/chrome/chrome-utils';
 import * as Main from '../src/assets/main';
 
 const now = new Date();

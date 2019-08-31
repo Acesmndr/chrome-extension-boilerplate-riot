@@ -1,5 +1,5 @@
 /* global window */
-import * as chromeUtils from './chrome-utilities';
+import * as chromeUtils from '../chrome/chrome-utils';
 import * as fileRequest from './api/file-request';
 
 const getData = (whatToFetch) => {

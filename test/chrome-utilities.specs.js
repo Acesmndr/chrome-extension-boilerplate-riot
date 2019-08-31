@@ -1,7 +1,7 @@
 /* global define, it, describe, beforeEach, afterEach */
 import { assert } from 'chai';
 import sinon from 'sinon';
-import * as chromeUtils from '../src/assets/chrome-utilities';
+import * as chromeUtils from '../src/chrome/chrome-utils';
 
 describe('Chrome Utilities', () => {
     beforeEach(() => {

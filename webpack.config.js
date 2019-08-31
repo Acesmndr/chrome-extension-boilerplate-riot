@@ -87,7 +87,7 @@ module.exports = [{
   },
 }, {
   entry: {
-    'interface.min': ['./src/popup/main.js'].concat(glob.sync('./src/popup/**/*.riot')),
+    'interface.min': ['./src/popup/index.js'].concat(glob.sync('./src/popup/**/*.riot')),
     // 'bundle.min': ['./views/presenters/mixins/messaging-mixin.js'].concat(glob.sync('./views/*.tag'), ['./views/presenters/controllers/main.js']),
   },
   mode: (ENV === 'production') ? 'production' : 'none',

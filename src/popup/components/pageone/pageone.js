@@ -1,18 +1,13 @@
-import helper from '../../helper';
+import { sendMessage } from '../../../chrome/chrome-utils';
 
 export default {
-  state: {
-    message: 'Hello there'
-  },
-  onBeforeMount(props, state) {
-    console.assert(this.state === state) // ok!
-    console.log(state.message) // Hello there
-  },
   goToSecondPage() {
-    helper.route('pagetwo');
+    this.route('pagetwo', {});
+  },
+  getAjaxDataFromBackground() {
+    sendMessage({ type: 'sendAjaxRequest' });
   },
   onMounted() {
-    // debugger;
-    // riot.mount('pagetwo');
-  }
-}
+    console.log("First page has been mounted");
+  },
+};
