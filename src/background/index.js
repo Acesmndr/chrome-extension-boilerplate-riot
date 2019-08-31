@@ -1,3 +1,3 @@
-import AttachListeners from 'plugins/listeners';
+import AttachListeners from './plugins/listener';
 
 AttachListeners();
