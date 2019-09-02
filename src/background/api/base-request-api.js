@@ -1,5 +1,5 @@
 /*
-  Simple Vanilla AJAX
+  Simple Vanilla AJAX which can be replaced with axios or other custom AJAX handlers
 */
 
 const isValidStatus = (status) => {

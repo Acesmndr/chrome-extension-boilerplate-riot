@@ -3,6 +3,7 @@ const clearCache = () => {
   chrome.storage.local.clear();
 }
 
+/* fetch returns a promise which resolves with the data from storage */
 const fetch = (getWhat) => {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get(getWhat,(data) => {
@@ -11,6 +12,7 @@ const fetch = (getWhat) => {
   });
 };
 
+/* triggers a chrome notification */
 const notify = (params) => {
   return new Promise((resolve, reject) => {
     chrome.notifications.create({
@@ -24,22 +26,31 @@ const notify = (params) => {
   });
 }
 
+/* dispatch a message to listeners in background or popup */
 const sendMessage = (msg) => {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(msg, resolve);
   });
 }
 
+/* sets the browser action icon */
 const setBadgeIcon = (iconPath) => {
   chrome.browserAction.setIcon({path: iconPath});
 }
 
+/* 
+  sets the browser action badge text
+  only four characters are visible
+*/
 const setBadgeText = (text = 'ext') => {
   chrome.browserAction.setBadgeText({
     text: text,
   });
 };
 
+/*
+  sets up the context menu of the browser action
+*/
 const setupContextMenu = (reset) => {
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({ id: 'reset_extension', title: 'Reset extension', contexts: ['browser_action'] });
@@ -51,6 +62,7 @@ const setupContextMenu = (reset) => {
   });
 }
 
+/* on browser startup returns a promise */
 const setupStartup = () => {
   return new Promise((resolve, reject) => {
     chrome.runtime.onStartup.addListener(() => {
@@ -59,6 +71,7 @@ const setupStartup = () => {
   });
 }
 
+/* stores a data in the local storage */
 const store = (dataObj) => {
   return new Promise((resolve, reject) => {
     chrome.storage.local.set(dataObj, resolve);

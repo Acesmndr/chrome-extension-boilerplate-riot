@@ -35,10 +35,6 @@ export default {
     helper.route('pageone');
   },
   onBeforeMount(props, state) {
-    // state = {
-    //   todolist: props.todolist || [],
-    //   containsItem: props.containsItem || false,
-    // }
     sendMessage({
       type: 'getDataFromBackground',
       query: 'todolist'
