@@ -4,6 +4,7 @@
   "description": "Chrome Extension Boilerplate with Riot",
   "scripts": {
     "test": "mocha -b",
+    "test:views": "jest",
     "dev": "",
     "inter": "riot",
     "version:show": "echo '\n\n\t\tExtension is currently in version '$(echo $npm_package_version)'\n\n'",
@@ -17,7 +18,9 @@
       "src/popup/components"
     ],
     "moduleFileExtensions": [
-      "js"
+      "js",
+      "jsx",
+      "riot"
     ]
   },
   "dependencies": {
@@ -49,7 +52,11 @@
     "@riotjs/cli": "^4.0.2",
     "babel-jest": "24.9.0",
     "chai": "^4.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "jest-css-modules-transform": "^2.5.0",
     "mocha": "^6.2.0",
+    "riot-jest-transformer": "^4.0.1",
     "sinon": "^7.4.1",
     "sinon-chrome": "^3.0.1"
   },

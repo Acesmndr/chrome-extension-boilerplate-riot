@@ -1,7 +1,11 @@
 {
+    "moduleNameMapper": {
+        "\\.(css|scss)$": "identity-obj-proxy"
+    },
     "transform": {
         "^.+\\.jsx?$": "babel-jest",
-        "^.+\\.riot$": "riot-jest-transformer"
+        "^.+\\.riot$": "riot-jest-transformer",
+        ".+\\.scss$": "jest-css-modules-transform"
     },
     "coverageDirectory": "../coverage"
 }

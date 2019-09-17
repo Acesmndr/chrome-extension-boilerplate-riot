@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page one specs should mount the tag 1`] = `
+<div
+  class="main-body"
+  data-is="pageone"
+>
+  <div
+    class="card"
+  >
+     
+    <div
+      class="content"
+    >
+       
+      <div
+        class="graphic"
+      >
+         
+        <div
+          class="title"
+        >
+          Riot Chrome Extension Boilerplate
+        </div>
+         
+        <img
+          class="illustration"
+          src="assets/img/illustration.svg"
+        />
+         
+        <div
+          class="author"
+        >
+          acesmndr@gmail.com
+        </div>
+         
+      </div>
+       
+    </div>
+     
+    <div
+      class="content right-align"
+    >
+       
+      <input
+        type="button"
+        value="Send Data Request"
+      />
+       
+      <input
+        type="button"
+        value="Go to page 2"
+      />
+       
+    </div>
+     
+  </div>
+</div>
+`;
