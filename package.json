@@ -13,16 +13,6 @@
     "build:staging": "NODE_ENV=staging webpack && mkdir build && cross-env crx pack staging -o build/$npm_package_name-v$npm_package_version-staging.crx -p key.pem",
     "build:production": "NODE_ENV=production webpack && mkdir build && cross-env crx pack production -o build/$npm_package_name-v$npm_package_version.crx -p key.pem"
   },
-  "jest": {
-    "moduleDirectories": [
-      "src/popup/components"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "riot"
-    ]
-  },
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-stage-0": "^7.0.0",
@@ -56,7 +46,7 @@
     "jest": "^24.9.0",
     "jest-css-modules-transform": "^2.5.0",
     "mocha": "^6.2.0",
-    "riot-jest-transformer": "^4.0.1",
+    "riot-jest-transformer": "^4.1.0",
     "sinon": "^7.4.1",
     "sinon-chrome": "^3.0.1"
   },

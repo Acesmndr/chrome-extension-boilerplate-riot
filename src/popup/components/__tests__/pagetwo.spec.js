@@ -9,18 +9,19 @@ const messageMixin = {
 }; 
 describe('Page two specs', () => {
     beforeAll( () => {
-        expect(mockFn.mock.calls.length).toBe(0);
-        riot.mixin('messageMixin', messageMixin);
+        // expect(mockFn.mock.calls.length).toBe(0);
+        // riot.mixin('messageMixin', messageMixin);
         // create mounting point 
         const elem = document.createElement('div');
         elem.className = "main-body";
         document.body.appendChild(elem)
         const opts = { data: ['batman', 'superman'] };
-        riot.mount(elem, 'pagetwo', opts);
+        riot.register('pagetwo', pagetwo);
+        riot.mount(elem, opts, 'pagetwo');
     });
     
     
-    it('should mount the tag', () => {
+    fit('should mount the tag', () => {
         expect(document.querySelector('.main-body')).toMatchSnapshot();
     });
     
