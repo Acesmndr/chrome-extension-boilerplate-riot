@@ -3,7 +3,8 @@
   "version": "2.2.0",
   "description": "Chrome Extension Boilerplate with Riot",
   "scripts": {
-    "test": "mocha -b",
+    "test": "yarn test:bg && yarn test:views",
+    "test:bg": "mocha -b",
     "test:views": "jest",
     "dev": "",
     "inter": "riot",
