@@ -2,7 +2,7 @@
 
 exports[`Page one specs should mount the tag 1`] = `
 <div
-  class="main-body"
+  id="root"
   is="pageone"
 >
   <div
