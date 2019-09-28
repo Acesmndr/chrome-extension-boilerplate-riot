@@ -12,7 +12,7 @@ describe('Page one specs', () => {
         pageElement.id = 'root';
         document.body.appendChild(pageElement)
 
-        const mountComp = riot.mount(pageElement, {}, 'pageone');
+        riot.mount(pageElement, {}, 'pageone');
     });
     
     
