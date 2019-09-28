@@ -6,11 +6,12 @@ export default function (component) {
     }
     switch (request.type) {
       case 'update':
-        console.log('update request', request.data);
+        console.log('Update request:', request.data);
         component.update(request.data);
         break;
       case 'route':
-        console.log('route', request.state);
+        console.log('Route:', request.data);
+        component.route(request.data.page, request.data.options);
         break;
       default:
     }
