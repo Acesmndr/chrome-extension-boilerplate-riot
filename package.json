@@ -3,11 +3,10 @@
   "version": "2.2.0",
   "description": "Chrome Extension Boilerplate with Riot",
   "scripts": {
-    "test": "npm run test:bg && npm run test:views",
+    "test": "yarn test:bg && yarn test:views",
     "test:bg": "mocha -b",
     "test:views": "jest",
     "dev": "",
-    "inter": "riot",
     "version:show": "echo '\n\n\t\tExtension is currently in version '$(echo $npm_package_version)'\n\n'",
     "version:upgrade": "echo '\n>###```version '$VERSION'```\n>* '$CHANGELOG >> changelog.md && yarn version --new-version $VERSION",
     "build:development": "cross-env NODE_ENV=development webpack -w",
