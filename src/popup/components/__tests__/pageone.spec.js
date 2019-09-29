@@ -1,50 +1,30 @@
 import * as riot from 'riot';
-import { registerPreprocessor } from '@riotjs/compiler';
 import pageone from '../pageone/pageone.riot';
+import route from '../../plugins/route';
+import * as chromeUtils from '../../../chrome/chrome-utils';
 
-registerPreprocessor('css', 'sass', function (code, { options }) {
-    const { file } = options
+riot.register('pageone', pageone);
+riot.install(route);
 
-    console.log('Compile the sass code in', file)
-
-    const { css } = sass.renderSync({
-        data: code
-    })
-
-    return {
-        code: css.toString(),
-        map: null
-    }
-})
-
-const mockFn = jest.fn();
-// const messageMixin = {
-//     setupListener: (e) => new mockFn(e),
-//     sendMessage: (msg, callback = () => {}) => new mockFn(msg),
-//     notify: (params, callback) => new mockFn(params, callback),
-// }; 
 describe('Page one specs', () => {
+    const pageElement = document.createElement('div');
     beforeAll( () => {
-        // expect(mockFn.mock.calls.length).toBe(0);
-        // riot.mixin('messageMixin', messageMixin);
-        // create mounting point 
-        const elem = document.createElement('div');
-        elem.className = "main-body";
-        document.body.appendChild(elem)
-        riot.mount(elem, 'pageone');
+        pageElement.id = 'root';
+        document.body.appendChild(pageElement)
+
+        riot.mount(pageElement, {}, 'pageone');
     });
     
     
     it('should mount the tag', () => {
-        expect(document.querySelector('.main-body')).toMatchSnapshot();
-    });
-    
-    it('should setup a listener on mount', () => {
-        expect(mockFn.mock.calls.length).toBe(1);
+        expect(document.querySelector('#root')).toMatchSnapshot();
     });
 
-    it('should have a title text', () => {
+    it('should have a title', () => {
         expect(document.querySelector('.graphic .title').textContent).toBe('Riot Chrome Extension Boilerplate');
+    });
+    
+    it('should have the author field', () => {
         expect(document.querySelector('.graphic .author').textContent).toBe('acesmndr@gmail.com');
     });
 
@@ -53,18 +33,28 @@ describe('Page one specs', () => {
     });
 
     it('should send an ajax request on click', () => {
-        const reqButton = document.querySelectorAll('input[type="button"]')[0];
+        const reqButton = document.querySelector('input[type="button"][value="Send Data Request"]');
+        const mockFn = jest.fn();
+
+        chromeUtils.sendMessage = mockFn;
         reqButton.click();
-        expect(mockFn.mock.calls.length).toBe(2);
-        expect(mockFn.mock.calls[1]).toEqual([{ type: 'sendAjaxRequest' }]);
+
+        expect(chromeUtils.sendMessage.mock.calls.length).toBe(1);
+        expect(chromeUtils.sendMessage.mock.calls[0]).toEqual([{ type: 'sendAjaxRequest' }]);
+
+        chromeUtils.sendMessage.mockRestore();
     });
 
-    it('should call a mount function to mount the second page', () => {
-        riot.mount = (where, what) => new mockFn(where, what);
-        const routeButton = document.querySelectorAll('input[type="button"]')[1];
+    it('should route to second page when route button is pressed', () => {
+        const routeButton = document.querySelector('input[type="button"][value="Go to page 2"]');
+        const mockFn = jest.fn();
+
+        riot.mount = mockFn;
         routeButton.click();
-        expect(mockFn.mock.calls.length).toBe(3);
-        expect(mockFn.mock.calls[2]).toEqual(['.main-body', 'pagetwo']);
-    });
 
+        expect(riot.mount.mock.calls.length).toBe(1);
+        expect(riot.mount.mock.calls[0]).toEqual([pageElement, {}, "pagetwo"]);
+
+        riot.mount.mockRestore();
+    })
 });
