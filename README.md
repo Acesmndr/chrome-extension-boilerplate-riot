@@ -4,7 +4,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/454ecbf346f2744ccee4/test_coverage)](https://codeclimate.com/github/Acesmndr/chrome-extension-boilerplate-riot/test_coverage)
 [![license](https://img.shields.io/npm/l/express.svg)]()
 
-A boilerplate for a single page extension/application using Riot framework as MVP and webpack as the module bundler.
+A boilerplate for a single page extension/application using Riot.js framework v4 as MVP and webpack as the module bundler.
 It is created to solve all the problems that we face while building a chrome extension.
 
 ### Features
@@ -14,9 +14,8 @@ It is created to solve all the problems that we face while building a chrome ext
 * Communication between background and popup has been simplified
 
 ### Screenshots
-><img width="200" alt="Main Page" src="https://user-images.githubusercontent.com/4254571/47734356-4a055700-dc92-11e8-86fb-07bb82a862f0.png">
-><img width="200" alt="Todo App" src="https://user-images.githubusercontent.com/4254571/47734354-496cc080-dc92-11e8-9461-7ffa249f4d38.png">
-
+><img width="363" alt="Main Page" src="https://user-images.githubusercontent.com/4254571/65899879-6646d200-e3d4-11e9-93c9-db8853515edf.png">
+><img width="363" alt="Todo App" src="https://user-images.githubusercontent.com/4254571/65899881-66df6880-e3d4-11e9-9b4c-a6908b1fe85b.png">
 
 ## Getting Started
 
@@ -36,7 +35,7 @@ What things you need to install the software and how to install them
 To get the extension built the following simple steps need to be followed
 
 Please make sure that Node and Yarn are installed in your machine.
-If yarn is not installed then install it by using the below command :
+If yarn is not installed then install it by using the below command:
 
 MAC
 
@@ -105,18 +104,21 @@ yarn version:show
 ```
 Then to upgrade the version along with a changelog run the following command
 ```
-CHANGELOG="Changes Made in the extension" VERSION="5.0.0" yarn version:upgrade
+CHANGELOG="Changes made in the extension" VERSION="5.0.0" yarn version:upgrade
 ```
-The changelog file needs to be committed manually.
-
 
 ## Built With
 
-* [Riot v3](https://v3.riotjs.now.sh/) - Frontend MVP Framework
+* [Riot v4](https://riot.js.org/) - Frontend MVP Framework
 * [Webpack](https://webpack.js.org/concepts/) - Module Bundler
 * [Yarn](https://yarnpkg.com/en) - The package manager
 * [Material Design](https://material.io/guidelines/material-design/introduction.html#introduction-goals) - Design Principles
 
 ### Note
-It uses the most stable version of Riot.js v3.
-Moving to Riot.js v4 requires another complete rewrite. Will start working on it soon...
+This uses v4 version of Riot.js which is a complete rewrite over Riot v3. If you prefer to use Riot.js v3 you could use [v3 version of chrome-extension-boilerplate-riot](https://github.com/Acesmndr/chrome-extension-boilerplate-riot/tree/riot-v3)
+
+### Maintained by
+* [Aashish Manandhar(acesmndr)](https://github.com/acesmndr)
+
+### Special Thanks
+* [Tamas G. Toth](https://github.com/tompascall) for updating the riot-jest-transformer to support registration of scss precompiler.

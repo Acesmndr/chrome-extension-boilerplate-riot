@@ -1,9 +1,9 @@
 /* global define, it, describe, beforeEach, afterEach, before, window */
 import { assert } from 'chai';
 import sinon from 'sinon';
-import * as fileRequest from '../src/assets/api/file-request';
-import * as chromeUtils from '../src/assets/chrome-utilities';
-import * as Main from '../src/assets/main';
+import * as fileRequest from '../src/background/api/file-request';
+import * as chromeUtils from '../src/chrome/chrome-utils';
+import * as Main from '../src/background/methods/main';
 
 const now = new Date();
 let clock;

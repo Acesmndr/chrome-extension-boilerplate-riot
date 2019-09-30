@@ -1,0 +1,23 @@
+@import '../../style/colorpalette';
+
+.graphic {
+  padding: 4px;
+  color: grey;
+  text-align: center;
+  .title {
+    font-size: 20px;
+  }
+  .illustration {
+    width: 300px;
+    margin: 24px 0 8px;
+  }
+  .author {
+    text-align: right;
+    font-size: 8px;
+    opacity: 0.5;
+  }
+}
+
+.request-btn {
+  background-color: $pinkish-red;
+}

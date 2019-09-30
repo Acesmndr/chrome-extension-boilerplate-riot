@@ -1,10 +1,16 @@
-const webpack = require('webpack');
 const glob = require('glob');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { registerPreprocessor } = require('@riotjs/compiler');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const riotScssPreprocessor = require('./riot-scss-preprocessor.config');
 
 const ENV = process.env.NODE_ENV;
+
+registerPreprocessor('css', 'scss', riotScssPreprocessor);
+
 const baseUrl = () => {
   switch (ENV) {
     case 'production':
@@ -17,14 +23,17 @@ const baseUrl = () => {
 const packageJSON = require('./package.json');
 
 const copyPlugin = new CopyWebpackPlugin([{
-  from: './src/assets/img/',
+  from: './src/background/images/',
   to: 'img/',
 }, {
-  from: './src/popup.html',
-  to: '../',
+  from: './src/popup/images/',
+  to: 'img/',
 }, {
-  from: './src/background.html',
-  to: '../',
+  from: './src/popup/index.html',
+  to: '../popup.html',
+}, {
+  from: './src/background/index.html',
+  to: '../background.html',
 }, {
   from: './src/manifest.json',
   transform: (content) => {
@@ -47,7 +56,7 @@ const uglifyPlugin = new UglifyJsPlugin({
 
 module.exports = [{
   entry: {
-    background: [`${__dirname}/src/assets/background.js`],
+    'background.min': [`${__dirname}/src/background/index.js`],
   },
   mode: (ENV === 'production') ? 'production' : 'none',
   module: {
@@ -67,32 +76,41 @@ module.exports = [{
   },
 }, {
   entry: {
-    'bundle.min': ['./views/presenters/mixins/messaging-mixin.js'].concat(glob.sync('./views/*.tag'), ['./views/presenters/controllers/main.js']),
+    'interface.min': ['./src/popup/index.js'].concat(glob.sync('./src/popup/**/*.riot')),
   },
   mode: (ENV === 'production') ? 'production' : 'none',
-  resolve: {
-    alias: {
-      riot: 'riot/riot.csp.js',
-    }
-  },
   module: {
     rules: [
       {
-        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'riot-tag-loader', enforce: 'pre',
-      },
-      {
-        test: /\.js$|\.tag$/, exclude: /node_modules/, loader: 'babel-loader', options: { presets: ['@babel/preset-env'] },
-      },
-      {
-        test: /\.scss$/,
+        test: /\.riot$/,
+        exclude: /node_modules/,
         use: [{
-            loader: "style-loader"
-        }, {
-            loader: "css-loader"
-        }, {
-            loader: "sass-loader"
-        }]
-      }
+          loader: '@riotjs/webpack-loader',
+          options: {
+            hot: true,
+            css: 'scss',
+          }
+        }],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'] 
+        },
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
     ],
   },
   plugins: [defineUrlPlugin],

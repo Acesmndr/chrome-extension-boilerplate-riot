@@ -1,0 +1,48 @@
+@import '../../style/colorpalette';
+
+.form {
+  font-size: 12px;
+  .title {
+    margin-bottom: 24px;
+    color: $simply-grey;
+    text-align: center;
+    font-size: 22px;
+  }
+  .empty {
+    margin-bottom: 32px;
+    width: 320px;
+  }
+  input[type='text'] {
+    padding: 10px;
+    width: 260px;
+    border: 1px solid $simply-grey;
+    border-radius: 2px 0 0 2px;
+    font-size: 16px;
+  }
+  .add-btn {
+    background: $simply-green;
+    border-radius: 0 2px 2px 0;
+    margin: 0;
+    font-size: 24px;
+    line-height: 24px;
+    padding: 5px 12px 11px 10px;
+  }
+}
+
+.todolist {
+  li {
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: $simply-grey;
+    &:hover {
+      text-decoration: line-through;
+    }
+  }  
+}
+
+.right-align.buttons {
+  margin-top: 32px;
+  .clear {
+    background-color: $pinkish-red;
+  }
+}

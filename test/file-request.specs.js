@@ -1,8 +1,8 @@
 /* global define, it, describe, before, after, beforeEach, afterEach */
 import { assert } from 'chai';
 import sinon from 'sinon';
-import * as baseApi from '../src/assets/api/base-request-api';
-import * as fileRequest from '../src/assets/api/file-request';
+import * as baseApi from '../src/background/api/base-request-api';
+import * as fileRequest from '../src/background/api/file-request';
 
 const URL = 'http://acesmndr.io/file';
 describe('File Request module', () => {

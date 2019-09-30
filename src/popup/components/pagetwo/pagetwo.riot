@@ -1,0 +1,26 @@
+<pagetwo>
+	<div class='card'>
+		<div class='content'>
+			<div class='form'>
+				<div class='title'>To Do</div>
+				<ul class='todolist'>
+					<li each = { (todoItem, i) in (state.todolist || []) } onclick={ removeItem } itemNo={i}>{ todoItem }</li>
+				</ul>
+				<img src='assets/img/empty.svg' class='empty' if={ !state.todolist || !state.todolist.length } />
+				<input type='text' required placeholder='Add item' autofocus/>
+				<input type='button' class='add-btn' value='+' onclick={ addItem } />
+			</div>
+		</div>
+		<div class="content right-align buttons">
+				<input type='button' class='clear' onclick={ clearAll } value='Clear All'/>
+			<input type='button' onclick={ goToFirstPage } value='Return to page 1'/>
+		</div>
+	</div>
+	<style type='scss'>
+		@import './src/popup/components/pagetwo/pagetwo';
+	</style>
+	<script>
+		import script from './pagetwo.js';
+		export default script;
+	</script>
+</pagetwo>
