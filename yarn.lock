@@ -6798,10 +6798,10 @@ rimraf@2, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.3:
   dependencies:
     glob "^7.1.3"
 
-riot-jest-transformer@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/riot-jest-transformer/-/riot-jest-transformer-4.1.0.tgz#0ae74cad6b9c9a8b4cc94d106c53fa9db55cf829"
-  integrity sha512-c0M8yR1hBaFASsonuIjLc7Uln1hHtSh+Gm6qvZu3ChnRTG20Wqyz0U58rJdA6jiBN9l0SkSqxxwt64q0mYgrVQ==
+riot-jest-transformer@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/riot-jest-transformer/-/riot-jest-transformer-5.0.0.tgz#c21867fe164fd02174217981ffc99afc20cfc4d7"
+  integrity sha512-IIkhl5FRS6PL0O93OhbQCkUuMJKQC7RFB2oPzN9JFM6u62vz4sY/tqA8uNhQNt1NG4vckTU9dtSZyMFp+Dmbcw==
   dependencies:
     "@babel/core" "^7.2.2"
     lodash "^4.17.15"

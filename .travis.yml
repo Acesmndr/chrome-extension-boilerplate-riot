@@ -4,8 +4,6 @@ env:
 language: node_js
 node_js:
   - 10.16.3
-before_install:
-  - npm install -g yarn
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
