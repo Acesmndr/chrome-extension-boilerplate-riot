@@ -35,7 +35,7 @@ What things you need to install the software and how to install them
 To get the extension built the following simple steps need to be followed
 
 Please make sure that Node and Yarn are installed in your machine.
-If yarn is not installed then install it by using the below command :
+If yarn is not installed then install it by using the below command:
 
 MAC
 
@@ -116,3 +116,9 @@ CHANGELOG="Changes made in the extension" VERSION="5.0.0" yarn version:upgrade
 
 ### Note
 This uses v4 version of Riot.js which is a complete rewrite over Riot v3. If you prefer to use Riot.js v3 you could use [v3 version of chrome-extension-boilerplate-riot](https://github.com/Acesmndr/chrome-extension-boilerplate-riot/tree/riot-v3)
+
+### Maintained by
+* [Aashish Manandhar(acesmndr)](https://github.com/acesmndr)
+
+### Special Thanks
+* [Tamas G. Toth](https://github.com/tompascall) for updating the riot-jest-transformer to support registration of scss precompiler.
