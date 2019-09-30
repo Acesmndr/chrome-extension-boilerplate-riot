@@ -15,13 +15,17 @@
   input[type='text'] {
     padding: 10px;
     width: 260px;
-    border-radius: 5px 0 0 5px;
+    border: 1px solid $simply-grey;
+    border-radius: 2px 0 0 2px;
     font-size: 16px;
   }
   .add-btn {
     background: $simply-green;
-    border-radius: 0 5px 5px 0;
-    margin: -5px;
+    border-radius: 0 2px 2px 0;
+    margin: 0;
+    font-size: 24px;
+    line-height: 24px;
+    padding: 5px 12px 11px 10px;
   }
 }
 
