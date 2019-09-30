@@ -1,20 +1,24 @@
 /* global chrome */
 const clearCache = () => {
-  chrome.storage.local.clear();
+  return new Promise((resolve) => {
+    chrome.storage.local.clear(() => {
+      resolve();
+    });
+  });
 }
 
 /* fetch returns a promise which resolves with the data from storage */
 const fetch = (getWhat) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     chrome.storage.local.get(getWhat,(data) => {
       resolve(data);
     });
   });
-};
+}
 
 /* triggers a chrome notification */
 const notify = (params) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     chrome.notifications.create({
       type: 'basic',
       title: params.title || 'Chrome Extension',
@@ -28,8 +32,9 @@ const notify = (params) => {
 
 /* dispatch a message to listeners in background or popup */
 const sendMessage = (msg) => {
-  return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage(msg, resolve);
+  return new Promise((resolve) => {
+    chrome.runtime.sendMessage(msg);
+    resolve();
   });
 }
 
@@ -46,7 +51,7 @@ const setBadgeText = (text = 'ext') => {
   chrome.browserAction.setBadgeText({
     text: text,
   });
-};
+}
 
 /*
   sets up the context menu of the browser action

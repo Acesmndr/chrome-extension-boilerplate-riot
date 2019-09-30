@@ -22,6 +22,5 @@ export default function() {
       default:
         console.warn('Invalid request type', request.type);
     }
-    return;
   });
 }

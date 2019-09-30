@@ -7,18 +7,25 @@ const getData = (whatToFetch) => {
     chromeUtils.sendMessage({
       type: 'update',
       data: {
-        todolist: storeData[whatToFetch],
-        containsItem: !!storeData[whatToFetch].length
+        todolist: storeData[whatToFetch] || [],
+        containsItem: storeData[whatToFetch] && !!storeData[whatToFetch].length
       }
     });
   }).catch((error) => {
-    reject(error);
+    chromeUtils.notify({
+      title: 'Error fetching store data',
+      message: error
+    });
   });
 }
 
 /* clears local storage */
 const reset = () => {
-  chromeUtils.clearCache();
+  return new Promise((resolve, reject) => {
+    chromeUtils.clearCache().then(() => resolve());
+  }).catch((error) => {
+    reject();
+  });
 }
 
 /* saves data in local storage and returns a promise */

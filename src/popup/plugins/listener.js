@@ -2,7 +2,7 @@
 export default function (component) {
   chrome.runtime.onMessage.addListener((request) => {
     if (component.isMounted === false) {
-      return false;
+      return component;
     }
     switch (request.type) {
       case 'update':
@@ -15,6 +15,7 @@ export default function (component) {
         break;
       default:
     }
+    return false;
   });
 
   return component;
