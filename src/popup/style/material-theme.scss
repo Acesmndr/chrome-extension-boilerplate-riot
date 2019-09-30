@@ -19,6 +19,12 @@ body {
   text-align: right;
 }
 
+input {
+  &:focus {
+    outline: 1px solid $simply-grey;
+  }
+}
+
 input[type='button'], input[type='submit']  {
   padding: 12px 16px;
   font-size: 16px;
@@ -27,7 +33,7 @@ input[type='button'], input[type='submit']  {
   margin-left: 4px;
   background: $simply-purple;
   color: white;
-  box-shadow: 1px 1px 2px #ccc;
+  box-shadow: 1px 1px 2px $nearly-white;
   &:hover {
     filter: brightness(1.5);
   }

@@ -42,4 +42,7 @@
 
 .right-align.buttons {
   margin-top: 32px;
+  .clear {
+    background-color: $pinkish-red;
+  }
 }
