@@ -1,25 +1,15 @@
 const glob = require('glob');
-const sass = require('node-sass');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { registerPreprocessor } = require('@riotjs/compiler');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const riotScssPreprocessor = require('./riot-scss-preprocessor.config');
+
 const ENV = process.env.NODE_ENV;
 
-registerPreprocessor('css', 'scss', function (code, { options }) {
-  const { file } = options
-  
-  const { css } = sass.renderSync({
-    data: code
-  })
-
-  return {
-    code: css.toString(),
-    map: null
-  }
-})
+registerPreprocessor('css', 'scss', riotScssPreprocessor);
 
 const baseUrl = () => {
   switch (ENV) {
@@ -40,7 +30,7 @@ const copyPlugin = new CopyWebpackPlugin([{
   to: 'img/',
 }, {
   from: './src/popup/index.html',
-  to: '../',
+  to: '../popup.html',
 }, {
   from: './src/background/index.html',
   to: '../',

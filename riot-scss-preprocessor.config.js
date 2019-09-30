@@ -1,5 +1,6 @@
 const sass = require('node-sass');
 
+/* Preprocesses scss from *.riot files */
 module.exports = function riotScssPreprocessor(code, { options }) {
     const { file } = options;
     console.log('Compile the sass code in', file);
