@@ -46,6 +46,7 @@ exports[`Page two specs should mount the tag 1`] = `
       class="content right-align buttons"
     >
       <input
+        class="clear"
         type="button"
         value="Clear All"
       />

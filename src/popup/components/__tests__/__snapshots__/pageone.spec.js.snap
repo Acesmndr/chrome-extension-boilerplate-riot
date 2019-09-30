@@ -34,6 +34,7 @@ exports[`Page one specs should mount the tag 1`] = `
       class="content right-align"
     >
       <input
+        class="request-btn"
         type="button"
         value="Send Data Request"
       />
