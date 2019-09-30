@@ -1,6 +1,6 @@
 {
   "name": "chrome_extension_riot",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Chrome Extension Boilerplate with Riot",
   "scripts": {
     "test": "yarn test:bg && yarn test:views",
@@ -8,7 +8,7 @@
     "test:views": "jest",
     "dev": "",
     "version:show": "echo '\n\n\t\tExtension is currently in version '$(echo $npm_package_version)'\n\n'",
-    "version:upgrade": "echo '\n>###```version '$VERSION'```\n>* '$CHANGELOG >> changelog.md && git add changelog.md && git commit -m 'Update Changelog' && yarn version --new-version $VERSION",
+    "version:upgrade": "echo '\n>### ```version '$VERSION'```\n>* '$CHANGELOG >> changelog.md && git add changelog.md && git commit -m 'Update Changelog' && yarn version --new-version $VERSION",
     "build:development": "cross-env NODE_ENV=development webpack -w",
     "build:staging": "NODE_ENV=staging webpack && mkdir build && cross-env crx pack staging -o build/$npm_package_name-v$npm_package_version-staging.crx -p key.pem",
     "build:production": "NODE_ENV=production webpack && mkdir build && cross-env crx pack production -o build/$npm_package_name-v$npm_package_version.crx -p key.pem"
