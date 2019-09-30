@@ -33,7 +33,7 @@ const copyPlugin = new CopyWebpackPlugin([{
   to: '../popup.html',
 }, {
   from: './src/background/index.html',
-  to: '../',
+  to: '../background.html',
 }, {
   from: './src/manifest.json',
   transform: (content) => {
@@ -56,7 +56,7 @@ const uglifyPlugin = new UglifyJsPlugin({
 
 module.exports = [{
   entry: {
-    background: [`${__dirname}/src/background/index.js`],
+    'background.min': [`${__dirname}/src/background/index.js`],
   },
   mode: (ENV === 'production') ? 'production' : 'none',
   module: {
