@@ -1,7 +1,0 @@
-{
-    "transform": {
-        "^.+\\.jsx?$": "babel-jest",
-        "^.+\\.riot$": "riot-jest-transformer"
-    },
-    "coverageDirectory": "../coverage"
-}

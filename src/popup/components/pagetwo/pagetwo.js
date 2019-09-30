@@ -1,4 +1,3 @@
-import helper from '../../helper';
 import { sendMessage } from '../../../chrome/chrome-utils';
 
 export default {
@@ -19,7 +18,6 @@ export default {
   },
   removeItem(e) {
     let itemList = this.state.todolist;
-    debugger;
     itemList.splice(Number(e.target.getAttribute('itemNo')), 1);
     sendMessage({
       type: 'saveDataInBackground',
@@ -32,7 +30,7 @@ export default {
     })
   },
   goToFirstPage() {
-    helper.route('pageone');
+    this.route('pageone');
   },
   onBeforeMount(props, state) {
     sendMessage({
@@ -41,10 +39,10 @@ export default {
     });
   },
   onBeforeUpdate(props, state) {
-    console.log(props, state);
     state = {
       todolist: props.todolist || [],
       containsItem: props.containsItem || false,
     }
+    console.log('state updated to:', state);
   }
 }
