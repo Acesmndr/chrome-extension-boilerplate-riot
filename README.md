@@ -25,19 +25,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-* Node
-* Yarn
-```
+* [Node](https://nodejs.org/)
+* [Yarn](https://yarnpkg.com/)
 
 ### Installing
 
-To get the extension built the following simple steps need to be followed
+To get the extension built the following simple steps need to be followed. Please make sure that Node and Yarn are installed in your machine. If yarn is not installed then install it by using the below command:
 
-Please make sure that Node and Yarn are installed in your machine.
-If yarn is not installed then install it by using the below command:
-
-MAC
+macOS
 
 ```
 brew install yarn
@@ -45,9 +40,9 @@ brew install yarn
 
 Windows
 
-1. download installer from https://yarnpkg.com/lang/en/docs/install/
-2. install yarn using installer
-3. restart command line if necessary
+1. Download installer from https://yarnpkg.com/lang/en/docs/install/
+2. Install yarn using installer
+3. Restart command line if necessary
 
 Clone this repository
 
