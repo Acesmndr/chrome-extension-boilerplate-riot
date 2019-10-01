@@ -85,7 +85,7 @@ There are two ways you can achieve this. Either you can load the unpacked extens
 
 ## Maintaining changelog
 
-A [changelog](https://github.com/cloudfactory/workstream-browser-timer/blob/master/changelog.md) has been maintained to keep track of all the changes made in the extension along with semantic versioning
+A [changelog](https://github.com/Acesmndr/chrome-extension-boilerplate-riot/blob/master/changelog.md) has been maintained to keep track of all the changes made in the extension along with semantic versioning
 
 ### Versioning
 
