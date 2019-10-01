@@ -89,7 +89,7 @@ A [changelog](https://github.com/Acesmndr/chrome-extension-boilerplate-riot/blob
 
 ### Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/cloudfactory/workstream-browser-timer/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Acesmndr/chrome-extension-boilerplate-riot/tags).
 
 ### Upgrading the extension
 
