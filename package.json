@@ -1,6 +1,6 @@
 {
   "name": "chrome_extension_riot",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Chrome Extension Boilerplate with Riot",
   "scripts": {
     "test": "yarn test:bg && yarn test:views",
