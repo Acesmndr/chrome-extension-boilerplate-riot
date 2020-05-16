@@ -9,3 +9,4 @@ src/assets/css/main.css
 src/background.js
 yarn-error.log
 coverage
+key.pem

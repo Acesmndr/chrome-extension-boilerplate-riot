@@ -1,7 +1,8 @@
 const glob = require('glob');
+const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { registerPreprocessor } = require('@riotjs/compiler');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -22,35 +23,43 @@ const baseUrl = () => {
 };
 const packageJSON = require('./package.json');
 
-const copyPlugin = new CopyWebpackPlugin([{
-  from: './src/background/images/',
-  to: 'img/',
-}, {
-  from: './src/popup/images/',
-  to: 'img/',
-}, {
-  from: './src/popup/index.html',
-  to: '../popup.html',
-}, {
-  from: './src/background/index.html',
-  to: '../background.html',
-}, {
-  from: './src/manifest.json',
-  transform: (content) => {
-    const manifestJSON = JSON.parse(content.toString());
-    return JSON.stringify(Object.assign({}, manifestJSON, { version: packageJSON.version }), null, ' ');
-  },
-  to: '../',
-}]);
+const copyPlugin = new CopyWebpackPlugin({
+  patterns: [
+    {
+      from: './src/background/images/',
+      to: 'img/',
+    }, {
+      from: './src/popup/images/',
+      to: 'img/',
+    }, {
+      from: './src/popup/index.html',
+      to: '../popup.html',
+    }, {
+      from: './src/background/index.html',
+      to: '../background.html',
+    }, {
+      from: './src/manifest.json',
+      transform: (content) => {
+        const manifestJSON = JSON.parse(content.toString());
+        return JSON.stringify(Object.assign({}, manifestJSON, { version: packageJSON.version }), null, ' ');
+      },
+      to: '../',
+    }
+  ]
+});
 const cleanPlugin = new CleanWebpackPlugin({
-  cleanOnceBeforeBuildPatterns: ['dist', 'production', 'staging', 'build', 'development'],
-  root: __dirname,
-  verbose: false,
+  dry: false,
+  verbose: true,
+  cleanOnceBeforeBuildPatterns: ['../../dist', '../../production', '../../staging', '../../build', '../../development'],
+  dangerouslyAllowCleanPatternsOutsideProject: true,
 });
 const defineUrlPlugin = new webpack.DefinePlugin({ BASE_URL: JSON.stringify(baseUrl()) });
-const uglifyPlugin = new UglifyJsPlugin({ 
-  uglifyOptions: {
-    comments: false, compress: { drop_console: ENV === 'production' }, minimize: true
+const terserPlugin = new TerserPlugin({ 
+  terserOptions: {
+    comments: false,
+    compress: { drop_console: ENV === 'production' },
+    minimize: true,
+    exclude: /\.spec\.js$/,
   },
 });
 
@@ -68,7 +77,7 @@ module.exports = [{
   },
   plugins: [cleanPlugin, copyPlugin, defineUrlPlugin],
   optimization: {
-    minimizer: [uglifyPlugin],
+    minimizer: [terserPlugin],
   },
   output: {
     filename: '[name].js',
@@ -115,7 +124,7 @@ module.exports = [{
   },
   plugins: [defineUrlPlugin],
   optimization: {
-    minimizer: [uglifyPlugin],
+    minimizer: [terserPlugin],
   },
   output: {
     filename: '[name].js',
