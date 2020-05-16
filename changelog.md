@@ -18,3 +18,6 @@
 
 >### ```version 3.0.0```
 >* Upgrade to Riot v4
+
+>### ```version 3.0.1```
+>* Update out of date packages to fix vulnerabilities
